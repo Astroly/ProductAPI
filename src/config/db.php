@@ -20,7 +20,7 @@
 
         }
     }
-    function test() {
+    /*function test() {
         $dbhost = 'localhost';
         $dbuser = 'id5591861_productadmin';
         $dbpass = '123456789';
@@ -50,5 +50,5 @@
     }
     // test();
     // echo '1234';
-
+*/
 ?>
