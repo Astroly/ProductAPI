@@ -8,7 +8,7 @@ $app = new \Slim\App;
 //Get All Products
 $app->get('/api/product', function(Request $request, Response $response){
     // $sql = "SELECT productID,title,description,price,pic FROM product";
-    $sql = "SELECT * FROM id5591861_product";
+    $sql = "SELECT * FROM product";
 
     try{
         //Get DB Object
