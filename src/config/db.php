@@ -8,7 +8,7 @@
 
         //connect
         public function connect(){
-            $dbhost = 'productapiservice.000webhostapp.com/localhost';
+            $dbhost = 'databases.000webhost.com';
             $dbuser = 'id5591861_productadmin';
             $dbpass = '123456789';
             $dbname = 'id5591861_product';
@@ -21,7 +21,7 @@
         }
     }
     function test() {
-        $dbhost = 'productapiservice.000webhostapp.com/localhost';
+        $dbhost = 'databases.000webhost.com';
         $dbuser = 'id5591861_productadmin';
         $dbpass = '123456789';
         $dbname = 'id5591861_product';
