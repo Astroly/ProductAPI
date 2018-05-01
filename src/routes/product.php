@@ -52,17 +52,15 @@ $app->get('/api/product/{productID}',function(Request $request, Response $respon
 $app->post('/api/product/add',function(Request $request, Response $response) {
 
     $productID = $request->getParam('productID') ;
-
     $title = $request->getParam('title') ;
-
+    $picture = $request->getParam('picture') ;
     $description = $request->getParam('description') ;
-
     $price = $request->getParam('price') ;
-    $pic = $request->getParam('pic') ;
+    
 
 
 
-    $sql ="INSERT INTO product (productID,title,description,price,pic) VALUES (:productID,:title,:description,:price,:pic)" ;
+    $sql ="INSERT INTO product (productID,title,picture,description,price) VALUES (:productID,:title,:picture,:description,:price)" ;
 
     try {
 
@@ -83,11 +81,10 @@ $app->post('/api/product/add',function(Request $request, Response $response) {
         $stmt->bindParam(':productID',    $productID) ;
 
         $stmt->bindParam(':title',     $title) ;
-
+        $stmt->bindParam(':picture',    $picture) ;
         $stmt->bindParam(':description',    $description) ;
-
         $stmt->bindParam(':price',    $price) ;
-        $stmt->bindParam(':pic',    $pic) ;
+        
 
 
 
@@ -111,14 +108,11 @@ $app->post('/api/product/add',function(Request $request, Response $response) {
 
 $app->put('/api/product/update/{id}',function(Request $request, Response $response) {
 
-    $id = $request->getAttribute('id');
-
+    $productID = $request->getParam('productID') ;
     $title = $request->getParam('title') ;
-
+    $picture = $request->getParam('picture') ;
     $description = $request->getParam('description') ;
-
     $price = $request->getParam('price') ;
-    $pic = $request->getParam('pic') ;
     
 
 
@@ -152,12 +146,11 @@ $app->put('/api/product/update/{id}',function(Request $request, Response $respon
 
         // $stmt->bindParam(':productID',    $productID) ;
 
-        $stmt->bindParam(':title',     $title) ;
-
-        $stmt->bindParam(':description',    $description) ;
-
-        $stmt->bindParam(':price',    $price) ;
-        $stmt->bindParam(':pic',    $pic) ;
+ 
+        $title = $request->getParam('title') ;
+        $picture = $request->getParam('picture') ;
+        $description = $request->getParam('description') ;
+        $price = $request->getParam('price') ;
 
 
 
