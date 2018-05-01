@@ -9,9 +9,9 @@
         //connect
         public function connect(){
             $dbhost = 'databases.000webhost.com';
-            $dbuser = 'id5591861_product';
+            $dbuser = 'id5591861_productadmin';
             $dbpass = '123456789';
-            $dbname = 'id5591861_productadmin';
+            $dbname = 'id5591861_product';
             // $mysql_connect_str = "$mysql:host=$this->dbhost;dbname=$this->dbname";
             $dbConnection = new PDO("mysql:host=$dbhost;dbname=$dbname",$dbuser,$dbpass);
             $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -22,9 +22,9 @@
     }
     function test() {
         $dbhost = 'databases.000webhost.com';
-        $dbuser = 'id5591861_product';
+        $dbuser = 'id5591861_productadmin';
         $dbpass = '123456789';
-        $dbname = 'id5591861_productadmin';
+        $dbname = 'id5591861_product';
         try {
             
         // $dbpass = '';
