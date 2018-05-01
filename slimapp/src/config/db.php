@@ -9,9 +9,9 @@
         //connect
         public function connect(){
             $dbhost = 'localhost';
-            $dbuser = 'root';
-            $dbpass = '';
-            $dbname = 'productservice';
+            $dbuser = 'id5591861_product';
+            $dbpass = '123456789';
+            $dbname = 'id5591861_productadmin';
             // $mysql_connect_str = "$mysql:host=$this->dbhost;dbname=$this->dbname";
             $dbConnection = new PDO("mysql:host=$dbhost;dbname=$dbname",$dbuser,$dbpass);
             $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -22,13 +22,13 @@
     }
     function test() {
         $dbhost = 'localhost';
-        $dbuser = 'root';
-        $dbpass = '';
-        $dbname = 'productservice';
+        $dbuser = 'id5591861_product';
+        $dbpass = '123456789';
+        $dbname = 'id5591861_productadmin';
         try {
             
         // $dbpass = '';
-                $conn = new PDO("mysql:host=$dbhost;dbname=productservice", $dbuser, $dbpass);
+                $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
             
                 // set the PDO error mode to exception
             
