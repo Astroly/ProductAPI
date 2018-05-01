@@ -77,14 +77,11 @@ $app->post('/api/product/add',function(Request $request, Response $response) {
         $stmt = $db->prepare($sql) ;
 
 
-
         $stmt->bindParam(':productID',    $productID) ;
-
         $stmt->bindParam(':title',     $title) ;
         $stmt->bindParam(':picture',    $picture) ;
         $stmt->bindParam(':description',    $description) ;
         $stmt->bindParam(':price',    $price) ;
-        
 
 
 
@@ -144,9 +141,8 @@ $app->put('/api/product/update/{id}',function(Request $request, Response $respon
 
 
 
-        // $stmt->bindParam(':productID',    $productID) ;
+        $stmt->bindParam(':productID',    $productID) ;
 
- 
         $title = $request->getParam('title') ;
         $picture = $request->getParam('picture') ;
         $description = $request->getParam('description') ;
@@ -172,7 +168,7 @@ $app->put('/api/product/update/{id}',function(Request $request, Response $respon
 
 //Delete Product
 
-$app->delete('/api/product/delete/{id}', function(Request $request, Response $response){
+$app->delete('/api/product/delete/{productID}', function(Request $request, Response $response){
 
     $id = $request->getAttribute('id');
 
