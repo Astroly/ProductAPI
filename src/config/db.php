@@ -8,7 +8,7 @@
 
         //connect
         public function connect(){
-            $dbhost = 'databases-auth.000webhost.com';
+            $dbhost = 'localhost';
             $dbuser = 'id5591861_product';
             $dbpass = '123456789';
             $dbname = 'id5591861_productadmin';
@@ -21,7 +21,7 @@
         }
     }
     function test() {
-        $dbhost = 'databases-auth.000webhost.com';
+        $dbhost = 'localhost';
         $dbuser = 'id5591861_product';
         $dbpass = '123456789';
         $dbname = 'id5591861_productadmin';
