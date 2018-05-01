@@ -21,7 +21,7 @@ $app->get('/api/product', function(Request $request, Response $response){
         $db = null;
         echo json_encode($products);
         // var_dump($products);
-
+        echo 'hello';
 
     }catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
