@@ -8,10 +8,10 @@
 
         //connect
         public function connect(){
-            $dbhost = 'databases.000webhost.com';
-            $dbuser = 'id5591861_productadmin';
-            $dbpass = '123456789';
-            $dbname = 'id5591861_product';
+            $dbhost = 'sql12.freemysqlhosting.net';
+            $dbuser = 'sql12235819';
+            $dbpass = 'HILAldVgjQ';
+            $dbname = 'sql12235819';
             // $mysql_connect_str = "$mysql:host=$this->dbhost;dbname=$this->dbname";
             $dbConnection = new PDO("mysql:host=$dbhost;dbname=$dbname",$dbuser,$dbpass);
             $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,10 +21,10 @@
         }
     }
     function test() {
-        $dbhost = 'databases.000webhost.com';
-        $dbuser = 'id5591861_productadmin';
-        $dbpass = '123456789';
-        $dbname = 'id5591861_product';
+        $dbhost = 'sql12.freemysqlhosting.net';
+        $dbuser = 'sql12235819';
+        $dbpass = 'HILAldVgjQ';
+        $dbname = 'sql12235819';
         try {
             
         // $dbpass = '';
