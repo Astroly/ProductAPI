@@ -7,7 +7,7 @@ require '../config/db.php';
 $app = new \Slim\App;
 
 //Get All Products
-$app->get('/api/product', function(Request $request, Response $response){
+$app->get('/api/products/', function(Request $request, Response $response){
 
     return 'Connected';
     
