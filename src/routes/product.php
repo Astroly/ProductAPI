@@ -19,10 +19,14 @@ $app->get('/api/product', function(Request $request, Response $response){
 
         $stmt = $db->prepare($sql);
         $stmt.execute();
-        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
-            echo $v;
+        // foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
+        //     echo $v;
+        // }
+
+        while($rs = $stmt->fetch()){
+            echo $rs['title'];
         }
         
         //echo json_encode($products);
