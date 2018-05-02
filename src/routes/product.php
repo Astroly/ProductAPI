@@ -10,39 +10,29 @@ $app = new \Slim\App;
 $app->get('/api/product', function(Request $request, Response $response){
 
     echo 'Connected';
+    
+    // $sql = "SELECT productID,title,description,price,pic FROM product";
+    $sql = "SELECT * FROM product";
 
-    // // $sql = "SELECT productID,title,description,price,pic FROM product";
-    // $sql = "SELECT * FROM product";
+    try{
+        //Get DB Object
+        $mysql = new db();
+        //Connect
+        $db = $mysql->connect();
 
-    // try{
-    //     //Get DB Object
-    //     $mysql = new db();
-    //     //Connect
-    //     $db = $mysql->connect();
-
-    //     echo 'Connected';
-
-    //     $stmt = $db->prepare($sql);
-    //     $stmt.execute();
-    //     // $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //     // foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
-    //     //     echo $v;
-    //     // }
-
-    //     while($rs = $stmt->fetch()){
-    //         echo $rs['title'];
-    //     }
+        $stmt = $db->prepare($sql);
+        $stmt.execute();
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-    //     //echo json_encode($products);
+        return json_encode($products);
 
-    //     $db = null;
-    //     // var_dump($products);
+        $db = null;
+        // var_dump($products);
         
 
-    // }catch(PDOException $e){
-    //     echo '{"error": {"text": '.$e->getMessage().'}';
-    // }
+    }catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
 });
 
 //GET Single Product
