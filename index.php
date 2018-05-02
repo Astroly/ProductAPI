@@ -17,30 +17,29 @@ $app->get('/api/', function ($request, $response) {
 //Get All Products
 $app->get('/api/products/', function($request, $response){
 
-    return 'Connected';
     
-    // // $sql = "SELECT productID,title,description,price,pic FROM product";
-    // $sql = "SELECT * FROM product";
+    // $sql = "SELECT productID,title,description,price,pic FROM product";
+    $sql = "SELECT * FROM product";
 
-    // try{
-    //     //Get DB Object
-    //     $mysql = new db();
-    //     //Connect
-    //     $db = $mysql->connect();
+    try{
+        //Get DB Object
+        $mysql = new db();
+        //Connect
+        $db = $mysql->connect();
 
-    //     $stmt = $db->prepare($sql);
-    //     $stmt.execute();
-    //     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $db->prepare($sql);
+        $stmt.execute();
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-    //     return json_encode($products);
+        return json_encode($products);
 
-    //     $db = null;
-    //     // var_dump($products);
+        $db = null;
+        // var_dump($products);
         
 
-    // }catch(PDOException $e){
-    //     return '{"error": {"text": '.$e->getMessage().'}';
-    // }
+    }catch(PDOException $e){
+        return '{"error": {"text": '.$e->getMessage().'}';
+    }
 });
 
 //GET Single Product
