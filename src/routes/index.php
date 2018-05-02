@@ -1,21 +1,13 @@
 <?php
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../../vendor/autoload.php';
 require '../config/db.php';
-
 $app = new \Slim\App;
 
-$app->get('/', function ($request, $response) {
-    return 'hello world';
-});
-
-$app->get('/api', function ($request, $response) {
-    return 'hello world';
-});
-
-
 //Get All Products
-$app->get('/products', function($request, $response){
+$app->get('/api/products/', function(Request $request, Response $response){
 
     return 'Connected';
     
@@ -175,7 +167,7 @@ $app->put('/api/product/update/{id}',function(Request $request, Response $respon
 
         echo '{"error": {"text": '.$e->getMessage().'}' ;
 
-    }
+    }();
 
 });
 
