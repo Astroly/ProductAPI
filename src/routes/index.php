@@ -11,7 +11,7 @@ $app->get('/', function ($request, $response) {
 
 
 //Get All Products
-$app->get('/api/products/', function(Request $request, Response $response){
+$app->get('/api/products/', function($request, $response){
 
     return 'Connected';
     
@@ -216,5 +216,7 @@ $app->delete('/api/product/delete/{productID}', function(Request $request, Respo
 
 
 });
+
+$app->run();
 
 ?>
