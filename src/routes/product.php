@@ -8,38 +8,41 @@ $app = new \Slim\App;
 
 //Get All Products
 $app->get('/api/product', function(Request $request, Response $response){
-    // $sql = "SELECT productID,title,description,price,pic FROM product";
-    $sql = "SELECT * FROM product";
 
-    try{
-        //Get DB Object
-        $mysql = new db();
-        //Connect
-        $db = $mysql->connect();
+    echo 'Connected';
 
-        echo 'Connected';
+    // // $sql = "SELECT productID,title,description,price,pic FROM product";
+    // $sql = "SELECT * FROM product";
 
-        $stmt = $db->prepare($sql);
-        $stmt.execute();
-        // $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // try{
+    //     //Get DB Object
+    //     $mysql = new db();
+    //     //Connect
+    //     $db = $mysql->connect();
 
-        // foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
-        //     echo $v;
-        // }
+    //     echo 'Connected';
 
-        while($rs = $stmt->fetch()){
-            echo $rs['title'];
-        }
+    //     $stmt = $db->prepare($sql);
+    //     $stmt.execute();
+    //     // $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //     // foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
+    //     //     echo $v;
+    //     // }
+
+    //     while($rs = $stmt->fetch()){
+    //         echo $rs['title'];
+    //     }
         
-        //echo json_encode($products);
+    //     //echo json_encode($products);
 
-        $db = null;
-        // var_dump($products);
+    //     $db = null;
+    //     // var_dump($products);
         
 
-    }catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
-    }
+    // }catch(PDOException $e){
+    //     echo '{"error": {"text": '.$e->getMessage().'}';
+    // }
 });
 
 //GET Single Product
