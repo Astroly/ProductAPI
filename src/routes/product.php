@@ -3,6 +3,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../../vendor/autoload.php';
+require '../config/db.php';
 $app = new \Slim\App;
 
 //Get All Products
@@ -18,8 +19,10 @@ $app->get('/api/product', function(Request $request, Response $response){
 
         $stmt = $db->query($sql);
         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $db = null;
+        
         echo json_encode($products);
+
+        $db = null;
         // var_dump($products);
         
 
