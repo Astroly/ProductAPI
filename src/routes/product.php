@@ -17,6 +17,8 @@ $app->get('/api/product', function(Request $request, Response $response){
         //Connect
         $db = $mysql->connect();
 
+        echo 'Connected';
+
         $stmt = $db->prepare($sql);
         $stmt.execute();
         // $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
