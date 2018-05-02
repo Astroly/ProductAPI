@@ -11,7 +11,7 @@ $app->get('/', function ($request, $response) {
 
 
 //Get All Products
-$app->get('/api/products/', function($request, $response){
+$app->get('/products', function($request, $response){
 
     return 'Connected';
     
