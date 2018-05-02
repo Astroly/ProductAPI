@@ -13,9 +13,9 @@ $app->get('/api/product', function(Request $request, Response $response){
 
     try{
         //Get DB Object
-        $db = new db();
+        $mysql = new db();
         //Connect
-        $db = $db->connect();
+        $db = $mysql->connect();
 
         $stmt = $db->query($sql);
         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
