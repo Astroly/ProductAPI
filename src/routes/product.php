@@ -20,8 +20,12 @@ $app->get('/api/product', function(Request $request, Response $response){
         $stmt = $db->prepare($sql);
         $stmt.execute();
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
+            echo $v;
+        }
         
-        echo json_encode($products);
+        //echo json_encode($products);
 
         $db = null;
         // var_dump($products);
