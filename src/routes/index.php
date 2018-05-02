@@ -5,6 +5,11 @@ require '../config/db.php';
 
 $app = new \Slim\App;
 
+$app->get('/', function ($request, $response) {
+    return 'hello world';
+});
+
+
 //Get All Products
 $app->get('/api/products/', function(Request $request, Response $response){
 
