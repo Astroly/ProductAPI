@@ -9,13 +9,13 @@ $app->get('/', function ($request, $response) {
     return 'hello world';
 });
 
-$app->get('/api', function ($request, $response) {
+$app->get('/api/', function ($request, $response) {
     return 'hello world';
 });
 
 
 //Get All Products
-$app->get('/products', function($request, $response){
+$app->get('/products/', function($request, $response){
 
     return 'Connected';
     
