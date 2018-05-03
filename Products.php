@@ -35,18 +35,21 @@ function getProducts() {
 
 
     function getProduct() {
-        $sql = "SELECT * FROM product WHERE productID = $args['productID']";
-          try {
+        $id = $request ->getAttribute('productID');
+        $sql = "SELECT * FROM product WHERE productID = $id";
+        
+        try {
             $db = getConnection();
             $stmt = $db->query($sql);
             $products = $stmt->fetchAll(PDO::FETCH_OBJ);
             $db = null;
-            echo json_encode($products);
-          }
-          catch(PDOException $e) {
-            echo json_encode($e->getMessage());
-          }
+            echo json_encode($product);
+        }catch(PDOException $e){
+            echo'{"error":{"text":}'.$e->getMessage().'}';
         }
+    }
+
+    
 function getConnection() {
     $dbhost="sql12.freemysqlhosting.net";
     $dbuser="sql12235819";
