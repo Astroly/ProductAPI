@@ -6,13 +6,13 @@ $app->get('/api/test', function ($request, $response) {
 });
 $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
-    getProduct();
+    getProducts();
 });
 $app->get('/api/products/{id}', function ($request, $response, $args) {
     return '{"data":"' . $args['id'] . '"}'; 
 });
 $app->run();
-function getProduct() {
+function getProducts() {
     $sql = "select productID, title, description FROM product";
       try {
         $db = getConnection();
