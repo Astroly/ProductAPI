@@ -8,13 +8,8 @@ $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
     getProducts();
 });
-$app->get('/api/product/{productID}', function ($request, $response /*$args*/) {
-    //return '{"data":"' . $args['id'] . '"}'; 
-    //$id = $request ->getAttribute('productID');
-    $id = $request ->getAttribute('productID');
-    $sql = "SELECT * FROM product WHERE productID = $id";
-    header("Content-Type: application/json");
-    getProduct();
+$app->get('/api/products/{id}', function ($request, $response, $args) {
+    return '{"data":"' . $args['id'] . '"}'; 
 });
 
 
@@ -36,20 +31,20 @@ function getProducts() {
     }
 
 
-    function getProduct() {
-        // $id = $args['productID'];
-        // $sql = "SELECT * FROM product WHERE productID = $id";
+    // function getProduct() {
+    //     // $id = $args['productID'];
+    //     // $sql = "SELECT * FROM product WHERE productID = $id";
         
-        try {
-            $db = getConnection();
-            $stmt = $db->query($sql);
-            $products = $stmt->fetchAll(PDO::FETCH_OBJ);
-            $db = null;
-            echo json_encode($product);
-        }catch(PDOException $e){
-            echo'{"error":{"text":}'.$e->getMessage().'}';
-        }
-    }
+    //     try {
+    //         $db = getConnection();
+    //         $stmt = $db->query($sql);
+    //         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+    //         $db = null;
+    //         echo json_encode($product);
+    //     }catch(PDOException $e){
+    //         echo'{"error":{"text":}'.$e->getMessage().'}';
+    //     }
+    // }
 
     
 function getConnection() {
