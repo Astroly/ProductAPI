@@ -1,7 +1,7 @@
 <?php
 require './vendor/autoload.php';
 $app = new Slim\App;
-$app->get('/', function ($request, $response) {
+$app->get('/api/test', function ($request, $response) {
     return 'hello world';
 });
 $app->get('/api/products', function ($request, $response) {
