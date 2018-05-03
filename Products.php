@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
+require './vendor/autoload.php';
 $app = new Slim\App;
 $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
