@@ -23,7 +23,7 @@ function getProducts() {
         $stmt = $db->query($sql);
         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        echo json_encode($products);
+        echo json_encode($products) <br>;
       }
       catch(PDOException $e) {
         echo json_encode($e->getMessage());
