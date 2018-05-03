@@ -13,9 +13,11 @@ $app->get('/api/products', function ($request, $response) {
 $app->get('/api/products/{id}', function ($request, $response, $args) {
     return '{"data":"' . $args['id'] . '"}'; 
 });
+
 $app->run();
+
 function getProduct() {
-    $sql = "select productID, title, description FROM product";
+    $sql = "select * FROM product";
       try {
         $db = getConnection();
         $stmt = $db->query($sql);
