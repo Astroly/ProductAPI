@@ -5,17 +5,17 @@ require './db.php';
 
 $app = new \Slim\App;
 
-$app->get('/', function ($request, $response) {
-    return 'hello world';
-});
+// $app->get('/', function ($request, $response) {
+//     return 'hello world';
+// });
 
-$app->get('/api/', function ($request, $response) {
-    return 'hello world';
-});
+// $app->get('/api/', function ($request, $response) {
+//     return 'hello world';
+// });
 
 
 //Get All Products
-$app->get('/api/products/', function($request, $response){
+$app->get('/api/product/', function($request, $response){
 
     
     // $sql = "SELECT productID,title,description,price,pic FROM product";
