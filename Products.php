@@ -60,5 +60,5 @@ function getConnection() {
 }
 
 
-$app->run();
+
 ?>
