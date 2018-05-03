@@ -1,6 +1,7 @@
 <?php
 require './vendor/autoload.php';
 $app = new Slim\App;
+return "xxx";
 $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
     getProduct();
