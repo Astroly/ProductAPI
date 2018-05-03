@@ -1,7 +1,7 @@
 <?php
 
 require './vendor/autoload.php';
-require './db.php';
+
 
 $app = new \Slim\App;
 
@@ -219,7 +219,7 @@ $app->delete('/api/product/delete/{productID}', function(Request $request, Respo
 
 
 });
-
+require './db.php';
 $app->run();
 
 ?>
