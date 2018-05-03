@@ -14,7 +14,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     return '{"data":"' . $args['id'] . '"}'; 
 });
 
-$app->run();
+
 
 function getProducts() {
     $sql = "select productID, title, pisture, description FROM product";
@@ -38,6 +38,6 @@ function getConnection() {
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
 }
-
+$app->run();
 
 ?>
