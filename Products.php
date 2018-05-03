@@ -8,10 +8,16 @@ $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
     getProducts();
 });
-$app->get('/api/products/{id}', function ($request, $response, $args) {
-    return '{"data":"' . $args['id'] . '"}'; 
+$app->get('/api/products/{productID}', function ($request, $response, $args) {
+    //return '{"data":"' . $args['id'] . '"}'; 
+    header("Content-Type: application/json");
+    getProduct();
 });
+
+
 $app->run();
+
+
 function getProducts() {
     $sql = "SELECT * FROM product";
       try {
@@ -25,6 +31,21 @@ function getProducts() {
         echo json_encode($e->getMessage());
       }
     }
+
+
+    function getProduct() {
+        $sql = "SELECT * FROM product WHERE productID";
+          try {
+            $db = getConnection();
+            $stmt = $db->query($sql);
+            $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $db = null;
+            echo json_encode($products);
+          }
+          catch(PDOException $e) {
+            echo json_encode($e->getMessage());
+          }
+        }
 function getConnection() {
     $dbhost="sql12.freemysqlhosting.net";
     $dbuser="sql12235819";
