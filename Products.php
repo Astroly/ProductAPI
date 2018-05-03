@@ -8,7 +8,7 @@ $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
     getProducts();
 });
-$app->get('/api/products/{productID}', function ($request, $response, $args) {
+$app->get('/api/product/{productID}', function ($request, $response, $args) {
     //return '{"data":"' . $args['id'] . '"}'; 
     header("Content-Type: application/json");
     getProduct();
