@@ -16,8 +16,8 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 
 $app->run();
 
-function getProduct() {
-    $sql = "select productID, title, description FROM product";
+function getProducts() {
+    $sql = "select * FROM product";
       try {
         $db = getConnection();
         $stmt = $db->query($sql);
