@@ -8,12 +8,27 @@ $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
     getProducts();
 });
-$app->get('/api/products/{id}', function ($request, $response, $args) {
-    $id = $request ->getAttribute('productID');
-    //return '{"data":"' . $args['id'] . '"}'; 
-    header("Content-Type: application/json");
-    getProduct();
-});
+$app->get('/api/products/{productID}', function ($request, $response, $args) {
+//     $id = $request ->getAttribute('productID');
+//     //return '{"data":"' . $args['id'] . '"}'; 
+//     header("Content-Type: application/json");
+//     getProduct();
+// });
+$id = $request ->getAttribute('productID');
+    $sql = "SELECT * FROM product WHERE productID = $id";
+    
+    try {
+        $db = new db();
+        $db = $db->connect();
+
+         $stmt =$db->query($sql);
+
+        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($product);
+    }catch(PDOException $e){
+        echo'{"error":{"text":}'.$e->getMessage().'}';
+    }
 
 
 $app->run();
