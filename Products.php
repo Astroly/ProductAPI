@@ -43,20 +43,20 @@ function getProducts() {
     }
 
 
-    function getProduct() {
-        //$id = $args->('{productID}');
-        $sql = "SELECT * FROM product WHERE productID = $id";
-        //return '$args['id']';
-        try {
-            $db = getConnection();
-            $stmt = $db->query($sql);
-            $products = $stmt->fetchAll(PDO::FETCH_OBJ);
-            $db = null;
-            echo json_encode($product);
-        }catch(PDOException $e){
-            echo'{"error":{"text":}'.$e->getMessage().'}';
-        }
-    }
+    // function getProduct() {
+    //     //$id = $args->('{productID}');
+    //     $sql = "SELECT * FROM product WHERE productID = $id";
+    //     //return '$args['id']';
+    //     try {
+    //         $db = getConnection();
+    //         $stmt = $db->query($sql);
+    //         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+    //         $db = null;
+    //         echo json_encode($product);
+    //     }catch(PDOException $e){
+    //         echo'{"error":{"text":}'.$e->getMessage().'}';
+    //     }
+    // }
 
     
 function getConnection() {
