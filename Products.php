@@ -14,6 +14,14 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 
 });
 
+$app->post('/api/product/add',function ($request, $response, $args) {
+    header("Content-Type: application/json");
+    postProduct();
+
+});
+
+
+
 $app->run();
 
 
@@ -44,7 +52,20 @@ function getProducts() {
     }catch(PDOException $e){
         echo'{"error":{"text":}'.$e->getMessage().'}';
     }
-
+ }
+ function postProducts() {
+    $sql = "SELECT * FROM product";
+      try {
+        $db = getConnection();
+        $stmt = $db->query($sql);
+        $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($products);
+      }
+      catch(PDOException $e) {
+        echo json_encode($e->getMessage());
+      }
+}
     
 function getConnection() {
     $dbhost="sql12.freemysqlhosting.net";
