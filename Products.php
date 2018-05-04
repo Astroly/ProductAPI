@@ -35,7 +35,7 @@ function getProducts() {
 
     function getProduct() {
         $id = $request ->getAttribute('productID');
-        $sql = "SELECT * FROM product WHERE productID = $id";
+        $sql = "SELECT * FROM product WHERE productID = $args[productID]";
         
         try {
             $db = getConnection();
