@@ -14,7 +14,8 @@ $app->get('/api/products/{productID}', function ($request, $response, $args) {
 //     header("Content-Type: application/json");
 //     getProduct();
 // });
-$id = $request ->getAttribute('productID');
+// $id = $request ->getAttribute('productID');
+$id=$args;
     $sql = "SELECT * FROM product WHERE productID = $id";
     
     try {
