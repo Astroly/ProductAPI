@@ -15,8 +15,8 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 //     getProduct();
 // });
  //$id = $args['id'];
-
-    $sql = "SELECT * FROM product WHERE productID = .$id";
+$id = $args['id'];
+    $sql = "SELECT * FROM product where productid =  '. $id'";
     
     try {
         $db = getConnection();
