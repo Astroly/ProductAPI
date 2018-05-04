@@ -9,7 +9,7 @@ $app->get('/api/products', function ($request, $response) {
     getProducts();
 });
 $app->get('/api/products/{id}', function ($request, $response, $args) {
-    $id = '$args['id']';
+    $id = $request ->getAttribute('productID');
     //return '{"data":"' . $args['id'] . '"}'; 
     header("Content-Type: application/json");
     getProduct();
