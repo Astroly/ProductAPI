@@ -8,15 +8,15 @@ $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
     getProducts();
 });
-$app->get('/api/products/{productID}', function ($request, $response, $args) {
+$app->get('/api/products/{id}', function ($request, $response, $args) {
 //     $id = $request ->getAttribute('productID');
 //     //return '{"data":"' . $args['id'] . '"}'; 
 //     header("Content-Type: application/json");
 //     getProduct();
 // });
-// $id = $request ->getAttribute('productID');
-$id=$args;
-    $sql = "SELECT * FROM product WHERE productID = $id";
+ //$id = $args['id'];
+
+    $sql = "SELECT * FROM product WHERE productID = .$id";
     
     try {
         $db = getConnection();
