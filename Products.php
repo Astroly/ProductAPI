@@ -10,17 +10,20 @@ $app->get('/api/products', function ($request, $response) {
 });
 $app->get('/api/products/{id}', function ($request, $response, $args) {
     header("Content-Type: application/json");
-    getProduct();
+    getProducts();
 
+    $sql = "SELECT * FROM product where productID =  ('".$args['id']."')";
+    
+    try {
+        $db = getConnection();
+        $stmt =$db->query($sql);
+        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($product);
+    }catch(PDOException $e){
+        echo'{"error":{"text":}'.$e->getMessage().'}';
+    }
 });
-
-$app->post('/api/product/add',function ($request, $response, $args) {
-    header("Content-Type: application/json");
-    postProduct();
-
-});
-
-
 
 $app->run();
 
@@ -41,31 +44,20 @@ function getProducts() {
 
 
     function getProduct() {
-        $sql = "SELECT * FROM product where productID =  ('".$args['id']."')";
-    
-    try {
-        $db = getConnection();
-        $stmt =$db->query($sql);
-        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $db = null;
-        echo json_encode($product);
-    }catch(PDOException $e){
-        echo'{"error":{"text":}'.$e->getMessage().'}';
+        //$id = $args->('{productID}');
+        $sql = "SELECT * FROM product WHERE productID = $id";
+        //return '$args['id']';
+        try {
+            $db = getConnection();
+            $stmt = $db->query($sql);
+            $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $db = null;
+            echo json_encode($product);
+        }catch(PDOException $e){
+            echo'{"error":{"text":}'.$e->getMessage().'}';
+        }
     }
- }
- function postProducts() {
-    $sql = "SELECT * FROM product";
-      try {
-        $db = getConnection();
-        $stmt = $db->query($sql);
-        $products = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $db = null;
-        echo json_encode($products);
-      }
-      catch(PDOException $e) {
-        echo json_encode($e->getMessage());
-      }
-}
+
     
 function getConnection() {
     $dbhost="sql12.freemysqlhosting.net";
