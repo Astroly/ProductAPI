@@ -19,11 +19,8 @@ $id=$args;
     $sql = "SELECT * FROM product WHERE productID = $id";
     
     try {
-        $db = new db();
-        $db = $db->connect();
-
-         $stmt =$db->query($sql);
-
+        $db = getConnection();
+        $stmt =$db->query($sql);
         $product = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
         echo json_encode($product);
