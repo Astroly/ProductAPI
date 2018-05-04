@@ -27,7 +27,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     }catch(PDOException $e){
         echo'{"error":{"text":}'.$e->getMessage().'}';
     }
-
+});
 
 $app->run();
 
