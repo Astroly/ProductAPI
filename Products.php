@@ -9,7 +9,7 @@ $app->get('/api/products', function ($request, $response) {
     getProducts();
 });
 $app->get('/api/products/{productID}', function ($request, $response, $args) {
-    //return '{"data":"' . $args['id'] . '"}'; 
+    return '{"data":"' . $args['id'] . '"}'; 
     header("Content-Type: application/json");
     getProduct();
 });
@@ -34,9 +34,9 @@ function getProducts() {
 
 
     function getProduct() {
-        $id = $args->getAttribute('productID');
-        $sql = "SELECT * FROM product WHERE productID = $id";
-        
+        //$id = $args->('{productID}');
+        $sql = "SELECT * FROM product WHERE productID = 'productID'";
+        //return '$args['id']';
         try {
             $db = getConnection();
             $stmt = $db->query($sql);
