@@ -25,6 +25,17 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     }
 });
 
+$app->post('/api/products/add', function ($request, $response) {
+    header("Content-Type: application/json");
+    postProducts();
+});
+
+
+
+
+
+
+
 $app->run();
 
 
@@ -43,20 +54,31 @@ function getProducts() {
     }
 
 
-    // function getProduct() {
-    //     //$id = $args->('{productID}');
-    //     $sql = "SELECT * FROM product WHERE productID = $id";
-    //     //return '$args['id']';
-    //     try {
-    //         $db = getConnection();
-    //         $stmt = $db->query($sql);
-    //         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
-    //         $db = null;
-    //         echo json_encode($product);
-    //     }catch(PDOException $e){
-    //         echo'{"error":{"text":}'.$e->getMessage().'}';
-    //     }
-    // }
+    function postProduct() {
+        //$id = $args->('{productID}');
+        $sql ="INSERT INTO product (productID,title,picture,description,price) VALUES (:productID,:title,:picture,:description,:price)" ;
+        //return '$args['id']';
+        $productID = $request->getParam('productID') ;
+        $title = $request->getParam('title') ;
+        $picture = $request->getParam('picture') ;
+        $description = $request->getParam('description') ;
+        $price = $request->getParam('price') ;
+       
+        try {
+            $db = getConnection();
+            $stmt = $db->query($sql);
+            $stmt->bindParam(':productID',    $productID) ;
+            $stmt->bindParam(':title',     $title) ;
+            $stmt->bindParam(':picture',    $picture) ;
+            $stmt->bindParam(':description',    $description) ;
+            $stmt->bindParam(':price',    $price) ;
+            $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $db = null;
+            echo json_encode($product);
+        }catch(PDOException $e){
+            echo'{"error":{"text":}'.$e->getMessage().'}';
+        }
+    }
 
     
 function getConnection() {
