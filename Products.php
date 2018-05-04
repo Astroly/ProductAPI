@@ -9,8 +9,8 @@ $app->get('/api/products', function ($request, $response) {
     getProducts();
 });
 $app->get('/api/products/{id}', function ($request, $response, $args) {
-    header("Content-Type: application/json");
-    getProducts();
+    // header("Content-Type: application/json");
+    // getProducts();
 
     $sql = "SELECT * FROM product where productID =  ('".$args['id']."')";
     
