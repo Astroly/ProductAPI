@@ -34,14 +34,14 @@ $app->delete('/api/product/delete/{id}', function($request, $response, $args) {
     // header("Content-Type: application/json");
     // getProducts();
 
-    $sql = "DELETE FROM product WHERE productID= ('".$args['id']."')";
+    $sql = "DELETE FROM product WHERE productID = ('".$args['id']."')";
     
     try {
         $db = getConnection();
         $stmt =$db->query($sql);
         $product = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        echo '{"notice": {"text": "Product Deleted"}';
+        echo json_encode($product);
     }catch(PDOException $e){
         echo json_encode($e->getMessage());
     }
