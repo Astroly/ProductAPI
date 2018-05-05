@@ -27,30 +27,30 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
  $app->post('/api/products/add', function ($request, $response) {
 
 
-  $productID = $request('productID') ;
-    $title = $request('title') ;
-    $picture = $request('picture') ;
-    $description = $request'description') ;
-    $price = $request('price') ;
+    $db = getConnection();
+    $productID=$_POST["productID"];
+    $title = $_POST('title') ;
+    $picture = $_POST('picture') ;
+    $description = $_POST('description') ;
+    $price=$_POST["price"];
 
-    $sql ="INSERT INTO product (productID,title,picture,description,price) VALUES (:productID,:title,:picture,:description,:price)" ;
-    try {
-        $db = getConnection();
-        $stmt =$db->query($sql);
-        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
-        
-        $stmt->bindParam(':productID',    $productID) ;
-        $stmt->bindParam(':title',     $title) ;
-        $stmt->bindParam(':picture',    $picture) ;
-        $stmt->bindParam(':description',    $description) ;
-        $stmt->bindParam(':price',    $price) ;
-        $stmt->execute() ;
-        $db = null;
-        echo '{"notice: {"text": "Product Add"}' ;
-    } catch(PDOExcaption $e) {
-            echo '{"error":{"text": '.$e->getMessage().'}' ;
-
+    $query="INSERT INTO product SET productID='{$productID}', title='{$title}', price={$price}, picture={$picture}, price='{$price}'";
+    if(mysqli_query($connection, $query))
+    {
+        $response=array(
+            'status' => 1,
+            'status_message' =>'Product Added Successfully.'
+        );
     }
+    else
+    {
+        $response=array(
+            'status' => 0,
+            'status_message' =>'Product Addition Failed.'
+        );
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
     
  });
 $app->put('/api/products/update/{id}',function($request, $response, $args) {
