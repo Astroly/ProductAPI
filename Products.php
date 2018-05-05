@@ -30,7 +30,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 //     postProducts();
 // });
 
-$app->delete('/api/product/delete/{productID}', function($request, $response, $args) {
+$app->delete('/api/product/delete/{id}', function($request, $response, $args) {
     // header("Content-Type: application/json");
     // getProducts();
 
