@@ -9,8 +9,7 @@ $app->get('/api/products', function ($request, $response) {
     getProducts();
 });
 $app->get('/api/products/{id}', function ($request, $response, $args) {
-    // header("Content-Type: application/json");
-    // getProducts();
+
 
     $sql = "SELECT * FROM product where productID =  ('".$args['id']."')";
     
@@ -26,12 +25,13 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 });
 
  $app->post('/api/products/add', function ($request, $response) {
-     //header("Content-Type: application/json");
-     $productID = $request->getParam('productID') ;
-    $title = $request->getParam('title') ;
-    $picture = $request->getParam('picture') ;
-    $description = $request->getParam('description') ;
-    $price = $request->getParam('price') ;
+
+
+  $productID = $request('productID') ;
+    $title = $request('title') ;
+    $picture = $request('picture') ;
+    $description = $request'description') ;
+    $price = $request('price') ;
 
     $sql ="INSERT INTO product (productID,title,picture,description,price) VALUES (:productID,:title,:picture,:description,:price)" ;
     try {
@@ -72,7 +72,7 @@ $app->put('/api/products/update/{id}',function($request, $response, $args) {
             WHERE productID=('".$args['id']."')" ;
       $productID =  $args['id']   ;
     try{
-        //Get DB Object
+
         $db = getConnection();
         $stmt =$db->query($sql);
         $stmt->bindParam(':productID',    $productID) ;
@@ -90,8 +90,6 @@ $app->put('/api/products/update/{id}',function($request, $response, $args) {
 });
 
 $app->delete('/api/products/delete/{id}', function($request, $response, $args) {
-    // header("Content-Type: application/json");
-    // getProducts();
 
     $sql = "DELETE FROM product WHERE productID = ('".$args['id']."')";
     
@@ -126,37 +124,6 @@ function getProducts() {
         echo json_encode($e->getMessage());
       }
     }
-
-    
-  
-        
-    // function postProduct() {
-    //     //$id = $args->('{productID}');
-    //     $sql ="INSERT INTO product (productID,title,picture,description,price) VALUES (:productID,:title,:picture,:description,:price)" ;
-    //     //return '$args['id']';
-    //     $productID = $request->getParam('productID') ;
-    //     $title = $request->getParam('title') ;
-    //     $picture = $request->getParam('picture') ;
-    //     $description = $request->getParam('description') ;
-    //     $price = $request->getParam('price') ;
-       
-    //     try {
-    //         $db = getConnection();
-    //         $stmt = $db->query($sql);
-    //         $stmt->bindParam(':productID',    $productID) ;
-    //         $stmt->bindParam(':title',     $title) ;
-    //         $stmt->bindParam(':picture',    $picture) ;
-    //         $stmt->bindParam(':description',    $description) ;
-    //         $stmt->bindParam(':price',    $price) ;
-    //         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
-    //         $db = null;
-    //         echo json_encode($product);
-    //     }catch(PDOException $e){
-    //         echo'{"error":{"text":}'.$e->getMessage().'}';
-    //     }
-    // }
-
-
 
     
 function getConnection() {
