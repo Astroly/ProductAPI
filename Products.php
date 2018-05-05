@@ -31,11 +31,11 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 // });
 $app->put('/api/product/update/{id}',function($request, $response, $args) {
 
-    $productID = $request->getParam('productID') ;
-    $title = $request->getParam('title') ;
-    $picture = $request->getParam('picture') ;
-    $description = $request->getParam('description') ;
-    $price = $request->getParam('price') ;
+    $productID = $request('productID') ;
+    $title = $request('title') ;
+    $picture = $request('picture') ;
+    $description = $request('description') ;
+    $price = $request('price') ;
 
 
     $sql = "UPDATE product SET
@@ -51,10 +51,10 @@ $app->put('/api/product/update/{id}',function($request, $response, $args) {
         $db = getConnection();
         $stmt =$db->query($sql);
         $stmt->bindParam(':productID',    $productID) ;
-        $title = $request->getParam('title') ;
-        $picture = $request->getParam('picture') ;
-        $description = $request->getParam('description') ;
-        $price = $request->getParam('price') ;
+        $title = $request('title') ;
+        $picture = $request('picture') ;
+        $description = $request('description') ;
+        $price = $request('price') ;
         $stmt->execute() ;
         echo '{"notice": {"text": "Product Update"}' ;
 
