@@ -29,8 +29,8 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 //     header("Content-Type: application/json");
 //     postProducts();
 // });
-$app->put('/api/product/update/{id}',function($request, $response, $args) {
-
+$app->put('/api/products/update/{id}',function($request, $response, $args) {
+    header("Content-Type: application/json");
     $productID = $request->getParam('productID') ;
     $title = $request->getParam('title') ;
     $picture = $request->getParam('picture') ;
@@ -64,7 +64,7 @@ $app->put('/api/product/update/{id}',function($request, $response, $args) {
     }
 });
 
-$app->delete('/api/product/delete/{id}', function($request, $response, $args) {
+$app->delete('/api/products/delete/{id}', function($request, $response, $args) {
     // header("Content-Type: application/json");
     // getProducts();
 
