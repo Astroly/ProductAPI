@@ -25,10 +25,34 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     }
 });
 
-// $app->post('/api/products/add', function ($request, $response) {
-//     header("Content-Type: application/json");
-//     postProducts();
-// });
+ $app->post('/api/products/add', function ($request, $response) {
+     header("Content-Type: application/json");
+     $productID = $request->getParam('productID') ;
+    $title = $request->getParam('title') ;
+    $picture = $request->getParam('picture') ;
+    $description = $request->getParam('description') ;
+    $price = $request->getParam('price') ;
+
+    $sql ="INSERT INTO product (productID,title,picture,description,price) VALUES (:productID,:title,:picture,:description,:price)" ;
+    try {
+        $db = getConnection();
+        $stmt =$db->query($sql);
+        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
+        
+        $stmt->bindParam(':productID',    $productID) ;
+        $stmt->bindParam(':title',     $title) ;
+        $stmt->bindParam(':picture',    $picture) ;
+        $stmt->bindParam(':description',    $description) ;
+        $stmt->bindParam(':price',    $price) ;
+        $stmt->execute() ;
+        $db = null;
+        echo '{"notice: {"text": "Product Add"}' ;
+    } catch(PDOExcaption $e) {
+            echo '{"error":{"text": '.$e->getMessage().'}' ;
+
+    }
+    
+ });
 $app->put('/api/products/update/{id}',function($request, $response, $args) {
     header("Content-Type: application/json");
     
