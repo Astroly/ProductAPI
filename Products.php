@@ -26,7 +26,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 });
 
  $app->post('/api/products/add', function ($request, $response) {
-     header("Content-Type: application/json");
+     //header("Content-Type: application/json");
      $productID = $request->getParam('productID') ;
     $title = $request->getParam('title') ;
     $picture = $request->getParam('picture') ;
