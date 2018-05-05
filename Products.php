@@ -41,7 +41,7 @@ $app->delete('/api/product/delete/{id}', function($request, $response, $args) {
         $stmt =$db->query($sql);
         $product = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        echo json_encode($product);
+        echo '{"notice": {"text": "Product Deleted"}';
     }catch(PDOException $e){
         echo json_encode($e->getMessage());
     }
