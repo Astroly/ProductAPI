@@ -29,6 +29,40 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 //     header("Content-Type: application/json");
 //     postProducts();
 // });
+$app->put('/api/product/update/{id}',function($request, $response, $args) {
+
+    $productID = $request->getParam('productID') ;
+    $title = $request->getParam('title') ;
+    $picture = $request->getParam('picture') ;
+    $description = $request->getParam('description') ;
+    $price = $request->getParam('price') ;
+
+
+    $sql = "UPDATE product SET
+            title = :title,
+            description = :description,
+            picture = :picture,
+            price = :price
+
+            WHERE productID=('".$args['id']."')" ;
+      $productID =  $args['id']   ;
+    try{
+        //Get DB Object
+        $db = getConnection();
+        $stmt =$db->query($sql);
+        $stmt->bindParam(':productID',    $productID) ;
+        $title = $request->getParam('title') ;
+        $picture = $request->getParam('picture') ;
+        $description = $request->getParam('description') ;
+        $price = $request->getParam('price') ;
+        $stmt->execute() ;
+        echo '{"notice": {"text": "Product Update"}' ;
+
+    } catch(PODExution $e) {
+        echo '{"error": {"text": '.$e->getMessage().'}' ;
+
+    }
+});
 
 $app->delete('/api/product/delete/{id}', function($request, $response, $args) {
     // header("Content-Type: application/json");
