@@ -31,13 +31,20 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 // });
 $app->put('/api/products/update/{id}',function($request, $response, $args) {
     header("Content-Type: application/json");
+    
+    $sql = "SELECT * FROM product where productID =  ('".$args['id']."')";
+    try {
+        $db = getConnection();
+        $stmt =$db->query($sql);
+        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+
     $productID = $request->getParam('productID') ;
     $title = $request->getParam('title') ;
     $picture = $request->getParam('picture') ;
     $description = $request->getParam('description') ;
     $price = $request->getParam('price') ;
-
-
+    
     $sql = "UPDATE product SET
             title = :title,
             description = :description,
@@ -45,23 +52,11 @@ $app->put('/api/products/update/{id}',function($request, $response, $args) {
             price = :price
 
             WHERE productID=('".$args['id']."')" ;
-      $productID =  $args['id']   ;
-    try{
-        //Get DB Object
-        $db = getConnection();
-        $stmt =$db->query($sql);
-        $stmt->bindParam(':productID',    $productID) ;
-        $title = $request->getParam('title') ;
-        $picture = $request->getParam('picture') ;
-        $description = $request->getParam('description') ;
-        $price = $request->getParam('price') ;
-        $stmt->execute() ;
-        echo '{"notice": {"text": "Product Update"}' ;
 
-    } catch(PODExution $e) {
-        echo '{"error": {"text": '.$e->getMessage().'}' ;
-
+    }catch(PDOException $e){
+        echo'{"error":{"text":}'.$e->getMessage().'}';
     }
+
 });
 
 $app->delete('/api/products/delete/{id}', function($request, $response, $args) {
