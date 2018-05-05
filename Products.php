@@ -33,18 +33,8 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 $app->delete('/api/product/delete/{id}', function($request, $response, $args) {
     // header("Content-Type: application/json");
     // getProducts();
-
-    $sql = "DELETE FROM product WHERE productID=('".$args['id']."')";
+    deleteProducts();
     
-    try {
-        $db = getConnection();
-        $stmt =$db->query($sql);
-        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $db = null;
-        echo '{"notice": {"text": "Product Deleted"}';
-    }catch(PDOException $e){
-        echo'{"error":{"text":}'.$e->getMessage().'}';
-    }
 });
 
 
@@ -68,7 +58,19 @@ function getProducts() {
       }
     }
 
-
+    function deleteProducts() {
+        $sql = "DELETE FROM product WHERE productID=('".$args['id']."')";
+    
+    try {
+        $db = getConnection();
+        $stmt =$db->query($sql);
+        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo '{"notice": {"text": "Product Deleted"}';
+    }catch(PDOException $e){
+        echo'{"error":{"text":}'.$e->getMessage().'}';
+    }
+        }
     // function postProduct() {
     //     //$id = $args->('{productID}');
     //     $sql ="INSERT INTO product (productID,title,picture,description,price) VALUES (:productID,:title,:picture,:description,:price)" ;
