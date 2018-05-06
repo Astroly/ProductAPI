@@ -80,13 +80,13 @@ $app->post('/api/product/add',function(Request $request, Response $response) {
 
         //get DB object
 
-        $db = new db() ;
+        // $db = new db() ;
 
         //connect
 
-        $db = $db->connect() ;
+        // $db = $db->connect() ;
 
-
+        $db = getConnection();
 
         $stmt = $db->prepare($sql) ;
 
