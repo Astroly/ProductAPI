@@ -27,57 +27,59 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     }
 });
 
-//  $app->post('/api/products/add', function ($request, $response) {
+//Add
+
+ $app->post('/api/products/add', function ($request, $response) {
 
 
-//     $db = getConnection();
-//     $productID=$_POST["productID"];
-//     $title = $_POST('title') ;
-//     $picture = $_POST('picture') ;
-//     $description = $_POST('description') ;
-//     $price=$_POST["price"];
+    $db = getConnection();
+    $productID=$_POST["productID"];
+    $title = $_POST('title') ;
+    $picture = $_POST('picture') ;
+    $description = $_POST('description') ;
+    $price=$_POST["price"];
 
-//     $query="INSERT INTO product SET productID='{$productID}', title='{$title}', price={$price}, picture={$picture}, price='{$price}'";
+    $query="INSERT INTO product SET productID='{$productID}', title='{$title}', price={$price}, picture={$picture}, price='{$price}'";
     
     
     
-//  });
+ });
 
-// $app->put('/api/products/update/{id}',function($request, $response, $args) {
-//     header("Content-Type: application/json");
+$app->put('/api/products/update/{id}',function($request, $response, $args) {
+    header("Content-Type: application/json");
     
-//     $productID = $request->getParam('productID') ;
-//     $title = $request->getParam('title') ;
-//     $picture = $request->getParam('picture') ;
-//     $description = $request->getParam('description') ;
-//     $price = $request->getParam('price') ;
+    $productID = $request->getParam('productID') ;
+    $title = $request->getParam('title') ;
+    $picture = $request->getParam('picture') ;
+    $description = $request->getParam('description') ;
+    $price = $request->getParam('price') ;
 
+//UPDATE
+    $sql = "UPDATE product SET
+            title = :title,
+            description = :description,
+            picture = :picture,
+            price = :price
 
-//     $sql = "UPDATE product SET
-//             title = :title,
-//             description = :description,
-//             picture = :picture,
-//             price = :price
+            WHERE productID=('".$args['id']."')" ;
+      $productID =  $args['id']   ;
+    try{
 
-//             WHERE productID=('".$args['id']."')" ;
-//       $productID =  $args['id']   ;
-//     try{
+        $db = getConnection();
+        $stmt =$db->query($sql);
+        $stmt->bindParam(':productID',    $productID) ;
+        $title = $request->getParam('title') ;
+        $picture = $request->getParam('picture') ;
+        $description = $request->getParam('description') ;
+        $price = $request->getParam('price') ;
+        $stmt->execute() ;
+        echo '{"notice": {"text": "Product Update"}' ;
 
-//         $db = getConnection();
-//         $stmt =$db->query($sql);
-//         $stmt->bindParam(':productID',    $productID) ;
-//         $title = $request->getParam('title') ;
-//         $picture = $request->getParam('picture') ;
-//         $description = $request->getParam('description') ;
-//         $price = $request->getParam('price') ;
-//         $stmt->execute() ;
-//         echo '{"notice": {"text": "Product Update"}' ;
+    } catch(PODExution $e) {
+        echo '{"error": {"text": '.$e->getMessage().'}' ;
 
-//     } catch(PODExution $e) {
-//         echo '{"error": {"text": '.$e->getMessage().'}' ;
-
-//     }
-// });
+    }
+});
 
 //Delete
 $app->delete('/api/products/delete/{id}', function($request, $response, $args) {
