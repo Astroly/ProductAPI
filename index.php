@@ -124,27 +124,18 @@ $app->put('/api/product/update/{id}',function(Request $request, Response $respon
     $picture = $request->getParam('picture') ;
     $description = $request->getParam('description') ;
     $price = $request->getParam('price') ;
-    
-
 
 
     $sql = "UPDATE product SET
-
             title = :title,
-
             description = :description,
-
             price = :price,
             pic = :pic
-
-            WHERE productID=$id" ;
-
+             WHERE productID=$id" ;
     try{
 
         //Get DB Object
-
        // $db = new db() ;
-
         // Connect
 
        // $db = $db->connect() ;
@@ -152,7 +143,6 @@ $app->put('/api/product/update/{id}',function(Request $request, Response $respon
        $db = getConnection();
 
         $stmt = $db->prepare($sql) ;
-
 
 
         $stmt->bindParam(':productID',    $productID) ;
