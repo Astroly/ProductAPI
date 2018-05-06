@@ -37,8 +37,10 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     $description = $_POST('description') ;
     $price=$_POST["price"];
 
-    $query="INSERT INTO product SET productID='{$productID}', title='{$title}', price={$price}, picture={$picture}, price='{$price}'";
-    
+    // $query="INSERT INTO product SET productID='{$productID}', title='{$title}',
+    //  price={$price}, picture={$picture}, price='{$price}'";
+   $query= "INSERT INTO product (title , description , picture, price)
+    VALUES ($title,  $description, $picture,  $price)"
     
     
  });
