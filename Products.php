@@ -35,32 +35,22 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     $price=$_POST["price"];
 
     $query="INSERT INTO product SET productID='{$productID}', title='{$title}', price={$price}, picture={$picture}, price='{$price}'";
-    if(mysqli_query($connection, $query))
-    {
-        $response=array(
-            'status' => 1,
-            'status_message' =>'Product Added Successfully.'
-        );
-    }
-    else
-    {
-        $response=array(
-            'status' => 0,
-            'status_message' =>'Product Addition Failed.'
-        );
-    }
-    header('Content-Type: application/json');
-    echo json_encode($response);
+    
+    
     
  });
 $app->put('/api/products/update/{id}',function($request, $response, $args) {
     header("Content-Type: application/json");
     
-    $productID = $request->getParam('productID') ;
-    $title = $request->getParam('title') ;
-    $picture = $request->getParam('picture') ;
-    $description = $request->getParam('description') ;
-    $price = $request->getParam('price') ;
+    
+    try{
+
+        $db = getConnection();
+        $productID = $request->getParam('productID') ;
+        $title = $request->getParam('title') ;
+        $picture = $request->getParam('picture') ;
+        $description = $request->getParam('description') ;
+        $price = $request->getParam('price') ;
 
 
     $sql = "UPDATE product SET
@@ -71,9 +61,6 @@ $app->put('/api/products/update/{id}',function($request, $response, $args) {
 
             WHERE productID=('".$args['id']."')" ;
       $productID =  $args['id']   ;
-    try{
-
-        $db = getConnection();
         $stmt =$db->query($sql);
         $stmt->bindParam(':productID',    $productID) ;
         $title = $request->getParam('title') ;
