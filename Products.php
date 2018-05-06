@@ -4,10 +4,10 @@ $app = new Slim\App;
 $app->get('/api/test', function ($request, $response) {
     return 'hello world';
 });
-// $app->get('/api/products', function ($request, $response) {
-//     header("Content-Type: application/json");
-//     getProducts();
-// });
+$app->get('/api/products', function ($request, $response) {
+    header("Content-Type: application/json");
+    getProducts();
+});
 // $app->get('/api/products/{id}', function ($request, $response, $args) {
 
 
@@ -97,19 +97,19 @@ $app->get('/api/test', function ($request, $response) {
 $app->run();
 
 
-// function getProducts() {
-//     $sql = "SELECT * FROM product";
-//       try {
-//         $db = getConnection();
-//         $stmt = $db->query($sql);
-//         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
-//         $db = null;
-//         echo json_encode($products);
-//       }
-//       catch(PDOException $e) {
-//         echo json_encode($e->getMessage());
-//       }
-//     }
+function getProducts() {
+    $sql = "SELECT * FROM product";
+      try {
+        $db = getConnection();
+        $stmt = $db->query($sql);
+        $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($products);
+      }
+      catch(PDOException $e) {
+        echo json_encode($e->getMessage());
+      }
+    }
 
     
 function getConnection() {
