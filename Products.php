@@ -42,8 +42,8 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     
     
  });
-
-$app->put('/api/products/update/{id}',function($request, $response, $args) {
+  
+ $app->put('/api/products/update/{id}',function($request, $response, $args) {
     header("Content-Type: application/json");
     
     $productID = $request->getParam('productID') ;
