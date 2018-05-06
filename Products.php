@@ -42,6 +42,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     
     
 //  });
+
 // $app->put('/api/products/update/{id}',function($request, $response, $args) {
 //     header("Content-Type: application/json");
     
@@ -78,20 +79,21 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 //     }
 // });
 
-// $app->delete('/api/products/delete/{id}', function($request, $response, $args) {
+//Delete
+$app->delete('/api/products/delete/{id}', function($request, $response, $args) {
 
-//     $sql = "DELETE FROM product WHERE productID = ('".$args['id']."')";
+    $sql = "DELETE FROM product WHERE productID = ('".$args['id']."')";
     
-//     try {
-//         $db = getConnection();
-//         $stmt =$db->query($sql);
-//         $product = $stmt->fetchAll(PDO::FETCH_OBJ);
-//         $db = null;
-//         echo '{"notice": {"text": "Product Deleted"}';
-//     }catch(PDOException $e){
-//         echo json_encode($e->getMessage("Product Deleted"));
-//     }
-// });
+    try {
+        $db = getConnection();
+        $stmt =$db->query($sql);
+        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo '{"notice": {"text": "Product Deleted"}';
+    }catch(PDOException $e){
+        echo json_encode($e->getMessage("Product Deleted"));
+    }
+});
 
 
 
