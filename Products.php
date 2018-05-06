@@ -113,10 +113,10 @@ function getProducts() {
 
     
 function getConnection() {
-    $dbhost="sql12.freemysqlhosting.net";
-    $dbuser="sql12235819";
-    $dbpass="HILAldVgjQ";
-    $dbname="sql12235819";
+    $dbhost="db4free.net";
+    $dbuser="product_api";
+    $dbpass="123456789Product";
+    $dbname="product_api";
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);  
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
