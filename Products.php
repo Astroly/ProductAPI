@@ -44,13 +44,11 @@ $app->put('/api/products/update/{id}',function($request, $response, $args) {
     
     
     try{
-
-        $db = getConnection();
-        $productID = $request->getParam('productID') ;
-        $title = $request->getParam('title') ;
-        $picture = $request->getParam('picture') ;
-        $description = $request->getParam('description') ;
-        $price = $request->getParam('price') ;
+$productID = $request->getParam('productID') ;
+    $title = $request->getParam('title') ;
+    $picture = $request->getParam('picture') ;
+    $description = $request->getParam('description') ;
+    $price = $request->getParam('price') ;
 
 
     $sql = "UPDATE product SET
@@ -61,6 +59,7 @@ $app->put('/api/products/update/{id}',function($request, $response, $args) {
 
             WHERE productID=('".$args['id']."')" ;
       $productID =  $args['id']   ;
+        $db = getConnection();
         $stmt =$db->query($sql);
         $stmt->bindParam(':productID',    $productID) ;
         $title = $request->getParam('title') ;
