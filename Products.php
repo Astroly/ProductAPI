@@ -31,13 +31,14 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 
 
     $db = getConnection();
-    $productID=$_POST["productID"];
-    $title = $_POST('title') ;
-    $picture = $_POST('picture') ;
-    $description = $_POST('description') ;
-    $price=$_POST["price"];
+    $productID = $request->getParam('productID') ;
+    $title = $request->getParam('title') ;
+    $picture = $request->getParam('picture') ;
+    $description = $request->getParam('description') ;
+    $price = $request->getParam('price') ;
 
-    $query="INSERT INTO product SET productID='{$productID}', title='{$title}', picture={$picture}, description={$description}, price='{$price}'";
+    $query="INSERT INTO product(productID,title,picture,description,price)
+     VALUES ($productID,$title,$picture,$description,$price)";
    //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
     
     
