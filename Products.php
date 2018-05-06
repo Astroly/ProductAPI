@@ -69,10 +69,10 @@ $app->put('/api/products/update/{id}',function($request, $response, $args) {
         $stmt->execute() ;
         echo '{"notice": {"text": "Product Update"}' ;
 
-    } catch(PODExution $e) {
-        echo '{"error": {"text": '.$e->getMessage().'}' ;
+    } //catch(PODExution $e) {
+    //     echo '{"error": {"text": '.$e->getMessage().'}' ;
 
-    }
+    // }
 });
 
 $app->delete('/api/products/delete/{id}', function($request, $response, $args) {
