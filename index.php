@@ -143,13 +143,13 @@ $app->put('/api/product/update/{id}',function(Request $request, Response $respon
 
         //Get DB Object
 
-        $db = new db() ;
+       // $db = new db() ;
 
         // Connect
 
-        $db = $db->connect() ;
+       // $db = $db->connect() ;
 
-
+       $db = getConnection();
 
         $stmt = $db->prepare($sql) ;
 
