@@ -1,28 +1,31 @@
 <?php
 require './vendor/autoload.php';
 $app = new Slim\App;
+//test
 $app->get('/api/test', function ($request, $response) {
     return 'hello world';
 });
+//getAll
 $app->get('/api/products', function ($request, $response) {
     header("Content-Type: application/json");
     getProducts();
 });
-// $app->get('/api/products/{id}', function ($request, $response, $args) {
+//getByID
+$app->get('/api/products/{id}', function ($request, $response, $args) {
 
 
-//     $sql = "SELECT * FROM product where productID =  ('".$args['id']."')";
+    $sql = "SELECT * FROM product where productID =  ('".$args['id']."')";
     
-//     try {
-//         $db = getConnection();
-//         $stmt =$db->query($sql);
-//         $product = $stmt->fetchAll(PDO::FETCH_OBJ);
-//         $db = null;
-//         echo json_encode($product);
-//     }catch(PDOException $e){
-//         echo'{"error":{"text":}'.$e->getMessage().'}';
-//     }
-// });
+    try {
+        $db = getConnection();
+        $stmt =$db->query($sql);
+        $product = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($product);
+    }catch(PDOException $e){
+        echo'{"error":{"text":}'.$e->getMessage().'}';
+    }
+});
 
 //  $app->post('/api/products/add', function ($request, $response) {
 
