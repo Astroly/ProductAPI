@@ -41,7 +41,9 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
      VALUES ($productID,$title,$picture,$description,$price)";
    //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
     
-    return $request, $response;
+    return $request
+    return $response;
+    
  });
   
  $app->put('/api/products/update/{id}',function($request, $response, $args) {
