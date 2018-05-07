@@ -31,11 +31,12 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 
 
     $db = getConnection();
-    $productID = $request->getParam('productID') ;
-    $title = $request->getParam('title') ;
-    $picture = $request->getParam('picture') ;
-    $description = $request->getParam('description') ;
-    $price = $request->getParam('price') ;
+
+    $productID = $request->bindParam('productID') ;
+    $title = $request->bindParam('title') ;
+    $picture = $request->bindParam('picture') ;
+    $description = $request->bindParam('description') ;
+    $price = $request->bindParam('price') ;
 
     $query="INSERT INTO product(productID,title,picture,description,price)
      VALUES ($productID,$title,$picture,$description,$price)";
