@@ -29,9 +29,8 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 
  $app->post('/api/products/add', function ($request, $response) {
 
-
+    try{
     $db = getConnection();
-    
     $productID = $request->getParam('productID') ;
     $title = $request->getParam('title') ;
     $picture = $request->getParam('picture') ;
@@ -40,6 +39,11 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 
     $query="INSERT INTO product(productID,title,picture,description,price)
      VALUES ($productID,$title,$picture,$description,$price)";
+    }catch(PODExution $e) {
+        echo '{"error": {"text": '.$e->getMessage().'}' ;
+
+    }
+    
    //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
     
     //return $request+$response;
