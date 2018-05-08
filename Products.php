@@ -29,25 +29,25 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 
  $app->post('/api/products/add', function ($request, $response) {
     //header("Content-Type: application/json");
-    addProducts();
-//     try{
-//     $db = getConnection();
-//     $productID = $request->getParam('productID') ;
-//     $title = $request->getParam('title') ;
-//     $picture = $request->getParam('picture') ;
-//     $description = $request->getParam('description') ;
-//     $price = $request->getParam('price') ;
-
-//     $query="INSERT INTO product(productID,title,picture,description,price)
-//      VALUES ($productID,$title,$picture,$description,$price)";
-//     }catch(PODExution $e) {
-//         echo '{"error": {"text": '.$e->getMessage().'}' ;
-
-//     }
+    //addProducts();
+    try{
     
-//    //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
+    $productID = $request->getParam('productID') ;
+    $title = $request->getParam('title') ;
+    $picture = $request->getParam('picture') ;
+    $description = $request->getParam('description') ;
+    $price = $request->getParam('price') ;
+    $db = getConnection();
+    $query="INSERT INTO product(productID,title,picture,description,price)
+     VALUES ('" . $name ."','". $title ."','" . $picture ."','". $description ."',,'". $price ."')";
+    }catch(PODExution $e) {
+        echo '{"error": {"text": '.$e->getMessage().'}' ;
+
+    }
     
-//     //return $request+$response;
+   //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
+    
+    //return $request+$response;
 
  });
   
