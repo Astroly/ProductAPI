@@ -51,22 +51,21 @@ try {
  $app->put('/api/products/{id}',function($request, $response, $args) {
    // header("Content-Type: application/json");
     
-    $productID = $request->getParam('productID') ;
-    $title = $request->getParam('title') ;
-    $picture = $request->getParam('picture') ;
-    $description = $request->getParam('description') ;
-    $price = $request->getParam('price') ;
+    $productID = ('productID') ;
+    $title = ('title') ;
+    $picture =('picture') ;
+    $description =('description') ;
+    $price = ('price') ;
      
-     $sql="UPDATE product SET
+
+try{
+ $db = getConnection();  
+$sql="UPDATE product SET
     title=$title,
     picture=$picture,
     description=$description,
     price=$price
      WHERE productID= ('".$args['id']."') " ;  
-
-
-try{
- $db = getConnection();  
 $stmt = $db->query($sql);
  $db = null;
 
