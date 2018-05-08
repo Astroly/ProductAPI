@@ -28,82 +28,26 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 });
 
   $app->post('/api/products/add', function ($request, $response) {
-    //$sth = $db->prepare"INSERT INTO product(productID,title,picture,description,price)
-   // VALUES(:name,:email,:pass)");
-  // header("Content-Type: application/json");
-   
-   try {
-     $db = getConnection();  
-   $sql="INSERT INTO product(productID,title,picture,description,price)
-     VALUES (:productID, :title, :picture, :description, :price)";
-     $sth->getParam(':productID', $productID, PDO::PARAM_INT);
-     $sth->getParam(':title', $title, PDO::PARAM_VARCHAR);
-     $sth->getParam(':picture', $picture, PDO::PARAM_VARCHAR);
-     $sth->getParam(':description', $description, PDO::PARAM_TEXT);
-     $sth->getParam(':price', $price, PDO::PARAM_INT);
-     $stmt =$db->query($sql);
-    
-    
-     $sth->execute();
-    $output = array(
-     'status'=>"1",
-     'operation'=>"success"
-    );
-    echo json_encode($output);
-     $db = null;
-    return;
-    }catch(Exception $ex){
-    echo $ex;
-    }
-    });
-//     $query="INSERT INTO product(productID,title,picture,description,price)
-//      VALUES (productID, :title, :picture, :description, :price)";
-//         $productID = $request->getParam('productID') ;
-//             $title = $request->getParam('title') ;
-//             $picture = $request->getParam('picture') ;
-//             $description = $request->getParam('description') ;
-//             $price = $request->getParam('price') ;
-//     try {
-//         $db = getConnection();
-//         $stmt =$db->query($sql);
-//         $stmt->bindParam("productID", $value->productID);
-//         $stmt->bindParam("title", $value->title);
-//         $stmt->bindParam("picture", $value->picture);
-//         $stmt->bindParam("description", $value->description);
-//         $stmt->bindParam("price", $value->price);
-//         $stmt->execute();
-//         //$wine->id = $db->lastInsertId();
-//         //$db = null;
-//         echo json_encode($value);
-//         $db = null;
-//     } catch(PDOException $e) {
-//         echo '{"error":{"text":'. $e->getMessage() .'}}';
-//     }
-    
-    
-//     //header("Content-Type: application/json");
-//     //addProducts();
-// //     try{
-    
-// //     $productID = $request->getParam('productID') ;
-// //     $title = $request->getParam('title') ;
-// //     $picture = $request->getParam('picture') ;
-// //     $description = $request->getParam('description') ;
-// //     $price = $request->getParam('price') ;
+    $query="INSERT INTO product(productID,title,picture,description,price)
+    VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."')";
+try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("productID", $value->$productID);
+    $stmt->bindParam("title", $value->$title);
+    $stmt->bindParam("picture", $value->$picture);
+    $stmt->bindParam("description", $value->$description);
+    $stmt->bindParam("price", $value->$price);
+    $stmt->execute();
+    //$wine->id = $db->lastInsertId();
+    //$db = null;
+    echo json_encode($value);
+    $db = null;
+} catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+}
 
-// //     $db = getConnection();
-// //     // $query="INSERT INTO product(productID,title,picture,description,price)
-// //     //  VALUES ('" . $name ."','". $title ."','" . $picture ."','". $description ."',,'". $price ."')";
-// //     }catch(PODExution $e) {
-// //         echo '{"error": {"text": '.$e->getMessage().'}' ;
-
-// //     }
-    
-// //    //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
-    
-// //     //return $request+$response;
-
-//  });
+});
   
  $app->put('/api/products/update/{id}',function($request, $response, $args) {
     header("Content-Type: application/json");
