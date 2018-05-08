@@ -56,23 +56,25 @@ try {
     $picture = $request->getParam('picture') ;
     $description = $request->getParam('description') ;
     $price = $request->getParam('price') ;
-try{
- $db = getConnection();  
- $productID= $args['id'];
- $sql="UPDATE product SET 
-    productID=$productID,
-    title=$title,
-    picture=$picture,
-    description=$description,
-    price=$price
-            WHERE productID=$productID" ;
+
+    return "OK";
+// try{
+//  $db = getConnection();  
+//  $productID= $args['id'];
+//  $sql="UPDATE product SET 
+//     productID=$productID,
+//     title=$title,
+//     picture=$picture,
+//     description=$description,
+//     price=$price
+//             WHERE productID=$productID" ;
       
-      $stmt = $db->query($sql);
-      $db = null;
-      return '{"status" : "success" }';
-  } catch(PDOException $e) {
-      echo '{"error":{"text":'. $e->getMessage() .'}}';
-  }
+//       $stmt = $db->query($sql);
+//       $db = null;
+//       return '{"status" : "success" }';
+//   } catch(PDOException $e) {
+//       echo '{"error":{"text":'. $e->getMessage() .'}}';
+//   }
 
         
      
