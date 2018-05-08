@@ -71,7 +71,7 @@ $sql="UPDATE product SET
 $stmt = $db->query($sql);
  $db = null;
 
-return '{"status" : "ADD Success" }';
+return '{"status" : "UPDATE Success" }';
   } catch(PDOException $e) {
       echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
