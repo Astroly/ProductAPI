@@ -30,7 +30,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
   $app->post('/api/products/add', function ($request, $response) {
     //$sth = $db->prepare"INSERT INTO product(productID,title,picture,description,price)
    // VALUES(:name,:email,:pass)");
-   header("Content-Type: application/json");
+  // header("Content-Type: application/json");
    
    try {
      $db = getConnection();  
