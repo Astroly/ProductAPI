@@ -57,26 +57,24 @@ try {
     $description = $request->getParam('description') ;
     $price = $request->getParam('price') ;
      
-     $sql="UPDATE product SET 
+     
+
+try{
+ $db = getConnection();  
+$sql="UPDATE product SET 
     title=:title,
     picture=:picture,
     description=:description,
     price=:price
      WHERE productID= ('".$args['id']."') " ;  
-   
-
-try{
- $db = getConnection();  
- $productID= $args['id'];
 $stmt = $db->query($sql);
  $db = null;
-      return '{"status" : "success" }';
+
+return '{"status" : "success" }';
   } catch(PDOException $e) {
       echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
-
-        
-     
+   
 });
 
 //Delete
