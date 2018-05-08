@@ -1,13 +1,14 @@
 # ProductAPI
-ProductAPI >>> Product Catalog<br>
+ProductAPI >>> Product Catalog<br><br><br>
+<br>
 GetALL >>>> https://productapi977377.herokuapp.com/Products.php/api/products <br>
-<br><br>
+<br>
 Get Each >>> https://productapi977377.herokuapp.com/Products.php/api/products/ {id} <br>
-<br><br>
+<br>
 POST >>> https://productapi977377.herokuapp.com/Products.php/api/products/<br>
-<br><br>
+<br>
 PUT >>> https://productapi977377.herokuapp.com/Products.php/api/products/ {id}<br>
-<br><br>
+<br>
 DELETE >>> https://productapi977377.herokuapp.com/Products.php/api/products/delete/ {id}   <br>   
 <br><br>
 example {<br>
@@ -17,8 +18,7 @@ example {<br>
     "description": "Fish Food",<br>
     "price": "31"<br>
  }<br>
- <br><br>
-<br>
+ 
 <br>Warning!!!<br>
 <br>productID is INT  <br>
 <br>title is VARCHAR Use Eng. only<br>
