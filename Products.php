@@ -36,11 +36,11 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
      $db = getConnection();  
    $sql="INSERT INTO product(productID,title,picture,description,price)
      VALUES (:productID, :title, :picture, :description, :price)";
-     $sth->bindParam(':productID', $productID, PDO::PARAM_INT);
-     $sth->bindParam(':title', $title, PDO::PARAM_VARCHAR);
-     $sth->bindParam(':picture', $picture, PDO::PARAM_VARCHAR);
-     $sth->bindParam(':description', $description, PDO::PARAM_TEXT);
-     $sth->bindParam(':price', $price, PDO::PARAM_INT);
+     $sth->getParam(':productID', $productID, PDO::PARAM_INT);
+     $sth->getParam(':title', $title, PDO::PARAM_VARCHAR);
+     $sth->getParam(':picture', $picture, PDO::PARAM_VARCHAR);
+     $sth->getParam(':description', $description, PDO::PARAM_TEXT);
+     $sth->getParam(':price', $price, PDO::PARAM_INT);
      $stmt =$db->query($sql);
     
     
