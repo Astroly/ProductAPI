@@ -61,7 +61,7 @@ try {
 try{
  $db = getConnection();  
 $sql="UPDATE product SET
- productID=$productID ;
+ productID=('".$args['id']."');
     title=$title,
     picture=$picture,
     description=$description,
