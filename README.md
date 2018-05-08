@@ -1,28 +1,30 @@
 # ProductAPI
 ProductAPI >>> Product Catalog<br>
 GetALL >>>> https://productapi977377.herokuapp.com/Products.php/api/products <br>
+<br><br>
 Get Each >>> https://productapi977377.herokuapp.com/Products.php/api/products/ {id} <br>
+<br><br>
 POST >>> https://productapi977377.herokuapp.com/Products.php/api/products/<br>
-   example      {<br>
-    int          "productID": "111",<br>
-    varchar(ENG) "title": "Sakura",<br>
-    url          "picture": "https://secure.ap-tescoassets.com/assets/TH/031/8850805000031/ShotType1_328x328.jpg",<br>
-    text (ENG)   "description": "Fish Food",<br>
-    int          "price": "31"<br>
-                }<br>
+<br><br>
 PUT >>> https://productapi977377.herokuapp.com/Products.php/api/products/ {id}<br>
-   example      {<br>
-    int          "productID": "111",<br>
-    varchar(ENG) "title": "Sakura",<br>
-    url          "picture": "https://secure.ap-tescoassets.com/assets/TH/031/8850805000031/ShotType1_328x328.jpg",<br>
-    text (ENG)   "description": "Fish Food",<br>
-    int          "price": "31"<br>
-                }<br>
-DELETE >>> https://productapi977377.herokuapp.com/Products.php/api/products/delete/ {id}   <br>
+<br><br>
+DELETE >>> https://productapi977377.herokuapp.com/Products.php/api/products/delete/ {id}   <br>   
+<br><br>
+example {<br>
+    "productID": "111",<br>
+    "title": "Sakura",<br>
+    "picture": "https://secure.ap-tescoassets.com/assets/TH/031/8850805000031/ShotType1_328x328.jpg",<br>
+    "description": "Fish Food",<br>
+    "price": "31"<br>
+ }<br>
+ <br><br>
 <br>
 <br>Warning!!!<br>
-<br>Use Eng. only<br>
+<br>productID is INT  <br>
+<br>title is VARCHAR Use Eng. only<br>
 <br>Picture is Url  <br>
+<br>description is VARCHAR Use Eng. only<br>
+<br>price is INT  <br>
 
 5830213003	Poramet Thongkaeokeot<br>
 5830213005	Pattragun Janpan<br>
