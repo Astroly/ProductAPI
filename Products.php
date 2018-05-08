@@ -51,11 +51,11 @@ try {
  $app->put('/api/products/{id}',function($request, $response, $args) {
    // header("Content-Type: application/json");
     
-    $productID = $request->isPut('productID') ;
-    $title = $request->isPut('title') ;
-    $picture =$request->isPut('picture') ;
-    $description =$request->isPut('description') ;
-    $price =$request->isPut('price') ;
+    $productID = $request->getParam('productID') ;
+    $title = $request->getParam('title') ;
+    $picture =$request->getParam('picture') ;
+    $description =$request->getParam('description') ;
+    $price =$request->getParam('price') ;
      
 
 try{
