@@ -6,8 +6,8 @@ POST >>> https://productapi977377.herokuapp.com/Products.php/api/products/<br>
    example      {<br>
     int          "productID": "111",<br>
     varchar(ENG) "title": "Sakura",<br>
-    url          "picture": "https://secure.ap-tescoassets.com/assets/TH/031/8850805000031/ShotType1_328x328.jpg",
-    text (ENG)   "description": "Fish Food",
+    url          "picture": "https://secure.ap-tescoassets.com/assets/TH/031/8850805000031/ShotType1_328x328.jpg",<br>
+    text (ENG)   "description": "Fish Food",<br>
     int          "price": "31"<br>
                 }<br>
 PUT >>> https://productapi977377.herokuapp.com/Products.php/api/products/ {id}<br>
