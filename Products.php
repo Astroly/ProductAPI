@@ -27,7 +27,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     }
 });
 
-  $app->post('/api/products', function ($request, $response) {
+  $app->post('/api/products/', function ($request, $response) {
      $productID = $request->getParam('productID') ;
       $title = $request->getParam('title') ;
       $picture = $request->getParam('picture') ;
