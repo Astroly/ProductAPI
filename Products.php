@@ -57,7 +57,7 @@ try {
     $description = $request->getParam('description') ;
     $price = $request->getParam('price') ;
 
-    return "OK";
+    //return "OK";
 
 try{
  $db = getConnection();  
