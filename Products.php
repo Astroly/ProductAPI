@@ -28,26 +28,47 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 });
 
  $app->post('/api/products/add', function ($request, $response) {
-    //header("Content-Type: application/json");
-    //addProducts();
-    try{
-    
-    $productID = $request->getParam('productID') ;
-    $title = $request->getParam('title') ;
-    $picture = $request->getParam('picture') ;
-    $description = $request->getParam('description') ;
-    $price = $request->getParam('price') ;
-    $db = getConnection();
     $query="INSERT INTO product(productID,title,picture,description,price)
-     VALUES ('" . $name ."','". $title ."','" . $picture ."','". $description ."',,'". $price ."')";
-    }catch(PODExution $e) {
-        echo '{"error": {"text": '.$e->getMessage().'}' ;
-
+     VALUES (productID, :title, :picture, :description, :price)";
+    try {
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("productID", $value->productID);
+        $stmt->bindParam("title", $value->title);
+        $stmt->bindParam("picture", $value->picture);
+        $stmt->bindParam("description", $value->description);
+        $stmt->bindParam("price", $value->price);
+        $stmt->execute();
+        //$wine->id = $db->lastInsertId();
+        //$db = null;
+        echo json_encode($value);
+        $db = null;
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
     
-   //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
     
-    //return $request+$response;
+    //header("Content-Type: application/json");
+    //addProducts();
+//     try{
+    
+//     $productID = $request->getParam('productID') ;
+//     $title = $request->getParam('title') ;
+//     $picture = $request->getParam('picture') ;
+//     $description = $request->getParam('description') ;
+//     $price = $request->getParam('price') ;
+
+//     $db = getConnection();
+//     // $query="INSERT INTO product(productID,title,picture,description,price)
+//     //  VALUES ('" . $name ."','". $title ."','" . $picture ."','". $description ."',,'". $price ."')";
+//     }catch(PODExution $e) {
+//         echo '{"error": {"text": '.$e->getMessage().'}' ;
+
+//     }
+    
+//    //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
+    
+//     //return $request+$response;
 
  });
   
