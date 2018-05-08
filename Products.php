@@ -41,7 +41,7 @@ try {
     VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."')";
     $stmt = $db->query($sql);
     $db = null;
-    return '{"status" : "success" }';
+    return '{"status" : "ADD Success" }';
 } catch(PDOException $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
 }
@@ -69,7 +69,7 @@ $sql="UPDATE product SET
 $stmt = $db->query($sql);
  $db = null;
 
-return '{"status" : "success" }';
+return '{"status" : "UPDATE Success" }';
   } catch(PDOException $e) {
       echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
@@ -86,9 +86,9 @@ $app->delete('/api/products/delete/{id}', function($request, $response, $args) {
         $stmt =$db->query($sql);
         $product = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        echo '{"notice": {"text": "Product Deleted"}';
+        return '{"status" : "DELETE Success" }';
     }catch(PDOException $e){
-        echo json_encode($e->getMessage("Product Deleted"));
+        echo json_encode($e->getMessage());
     }
 });
 
@@ -112,37 +112,7 @@ function getProducts() {
         echo json_encode($e->getMessage());
       }
     }
- function addProducts(){
-        $db = getConnection();
-		if(isset($_POST['productID'])){
-			$productID = $_POST['productID'];
-            $title= '';
-            $picture = '';
-            $description ='';
-            $price ='';
-			if(isset($_POST['title'])){
-				$title = $_POST['title'];
-			}
-			if(isset($_POST['picture'])){
-				$picture = $_POST['picture'];
-            }
-            if(isset($_POST['description'])){
-				$description = $_POST['description'];
-            }
-            if(isset($_POST['price'])){
-				$price = $_POST['price'];
-			}
-            $query="INSERT INTO product(productID,title,picture,description,price) 
-                    values ('" . $name ."','". $title ."','" . $picture ."','". $description ."',,'". $price ."')";
-            //$dbcontroller = new DBController();
-            
-			$result = $db->executeQuery($query);
-			if($result != 0){
-				$result = array('success'=>1);
-				return $result;
-			}
-		}
-	}
+
     
 function getConnection() {
     $dbhost="db4free.net";
