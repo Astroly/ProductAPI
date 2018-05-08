@@ -52,10 +52,10 @@ try {
    // header("Content-Type: application/json");
     
     $productID = $request->getParam('productID') ;
-    $title = $request->getParam('title') ;
-    $picture =$request->getParam('picture') ;
-    $description =$request->getParam('description') ;
-    $price =$request->getParam('price') ;
+    $title = $request->isPut('title') ;
+    $picture =$request->isPut('picture') ;
+    $description =$request->isPut('description') ;
+    $price =$request->isPut('price') ;
      
 
 try{
