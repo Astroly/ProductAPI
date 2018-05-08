@@ -28,33 +28,33 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 });
 
   $app->post('/api/products/add', function ($request, $response) {
-     $productID = $request->getParam('productID') ;
-      $title = $request->getParam('title') ;
-      $picture = $request->getParam('picture') ;
-      $description = $request->getParam('description') ;
-      $price = $request->getParam('price') ;
+    //  $productID = $request->getParam('productID') ;
+    //   $title = $request->getParam('title') ;
+    //   $picture = $request->getParam('picture') ;
+    //   $description = $request->getParam('description') ;
+    //   $price = $request->getParam('price') ;
       
       $sql="INSERT INTO product(productID,title,picture,description,price)
     VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."')";
      
-// try {
-//     $db = getConnection();
-//     $stmt = $db->query($sql);
-//     $stmt->$request->bindParam("productID", $value->$productID);
-//     $stmt->$request->bindParam("title", $value->$title);
-//     $stmt->$request->bindParam("picture", $value->$picture);
-//     $stmt->$request->bindParam("description", $value->$description);
-//     $stmt->$request->bindParam("price", $value->$price);
-//     $stmt->execute();
-//     //$wine->id = $db->lastInsertId();
-//     //$db = null;
-//     echo json_encode($value);
-//     $db = null;
-//     echo 'sussed';
-//     return "dfvsdfvs";
-// } catch(PDOException $e) {
-//     echo '{"error":{"text":'. $e->getMessage() .'}}';
-// }
+try {
+    $db = getConnection();
+    $stmt = $db->query($sql);
+    $stmt->$request->bindParam("productID", $value->$productID);
+    $stmt->$request->bindParam("title", $value->$title);
+    $stmt->$request->bindParam("picture", $value->$picture);
+    $stmt->$request->bindParam("description", $value->$description);
+    $stmt->$request->bindParam("price", $value->$price);
+    $stmt->execute();
+    //$wine->id = $db->lastInsertId();
+    //$db = null;
+    echo json_encode($value);
+    $db = null;
+    echo 'sussed';
+    return "dfvsdfvs";
+} catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+}
 
 });
   
