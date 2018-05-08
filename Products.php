@@ -51,7 +51,7 @@ try {
  $app->put('/api/products/{id}',function($request, $response, $args) {
    // header("Content-Type: application/json");
     
-    $productID = $request->getParam('productID') ;
+    $productID = $request->isPut('productID') ;
     $title = $request->isPut('title') ;
     $picture =$request->isPut('picture') ;
     $description =$request->isPut('description') ;
