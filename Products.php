@@ -28,16 +28,18 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 });
 
   $app->post('/api/products/add', function ($request, $response) {
-    $query="INSERT INTO product(productID,title,picture,description,price)
-    VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."')";
-      $productID = $request->getParam('productID') ;
+     $productID = $request->getParam('productID') ;
       $title = $request->getParam('title') ;
       $picture = $request->getParam('picture') ;
       $description = $request->getParam('description') ;
       $price = $request->getParam('price') ;
+      
+      $sql="INSERT INTO product(productID,title,picture,description,price)
+    VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."')";
+     
 try {
     $db = getConnection();
-    $stmt = $db->prepare($sql);
+    $stmt = $db->query($sql);
     $stmt->$request->bindParam("productID", $value->$productID);
     $stmt->$request->bindParam("title", $value->$title);
     $stmt->$request->bindParam("picture", $value->$picture);
