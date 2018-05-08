@@ -27,6 +27,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
     }
 });
 
+//POST ...ADD
   $app->post('/api/products/', function ($request, $response) {
      $productID = $request->getParam('productID') ;
       $title = $request->getParam('title') ;
@@ -47,7 +48,8 @@ try {
 }
 
 });
-  
+
+//PUT...UPDATE
  $app->put('/api/products/{id}',function($request, $response, $args) {
    // header("Content-Type: application/json");
     
@@ -69,7 +71,7 @@ $sql="UPDATE product SET
 $stmt = $db->query($sql);
  $db = null;
 
-return '{"status" : "UPDATE Success" }';
+return '{"status" : "ADD Success" }';
   } catch(PDOException $e) {
       echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
@@ -86,12 +88,9 @@ $app->delete('/api/products/delete/{id}', function($request, $response, $args) {
         $stmt =$db->query($sql);
         $product = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        return '{"status" : "DELETE Success" }';
-
-        //echo '{"notice": {"text": "Product Deleted"}';
-
+        echo '{"notice": {"text": "Product Deleted"}';
     }catch(PDOException $e){
-        echo json_encode($e->getMessage());
+        echo json_encode($e->getMessage("Product Deleted"));
     }
 });
 
