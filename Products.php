@@ -50,11 +50,11 @@ try {
     //$db = null;
     echo json_encode($value);
     $db = null;
+    echo 'sussed';
 } catch(PDOException $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
 }
-echo $response;
-echo 'complete';
+
 });
   
  $app->put('/api/products/update/{id}',function($request, $response, $args) {
