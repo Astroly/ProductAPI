@@ -32,12 +32,12 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
      VALUES (productID, :title, :picture, :description, :price)";
     try {
         $db = getConnection();
-        $stmt = $db->prepare($sql);
-        $stmt->getParam("productID", $value->productID);
-        $stmt->getParam("title", $value->title);
-        $stmt->getParam("picture", $value->picture);
-        $stmt->getParam("description", $value->description);
-        $stmt->getParam("price", $value->price);
+        $stmt =$db->query($sql);
+        $stmt->bindParam("productID", $value->productID);
+        $stmt->bindParam("title", $value->title);
+        $stmt->bindParam("picture", $value->picture);
+        $stmt->bindParam("description", $value->description);
+        $stmt->bindParam("price", $value->price);
         $stmt->execute();
         //$wine->id = $db->lastInsertId();
         //$db = null;
