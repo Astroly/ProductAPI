@@ -56,7 +56,8 @@ try {
     $picture =$request->getParam('picture') ;
     $description =$request->getParam('description') ;
     $price =$request->getParam('price') ;
-     
+    
+    $productID=$args['id'];
 
 try{
  $db = getConnection();  
@@ -65,7 +66,7 @@ $sql="UPDATE product SET
     picture=$picture,
     description=$description,
     price=$price
-     WHERE productID= ('".$args['id']."') " ;  
+     WHERE productID= $productID " ;  
 $stmt = $db->query($sql);
  $db = null;
 
