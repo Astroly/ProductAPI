@@ -62,10 +62,10 @@ try {
 try{
  $db = getConnection();  
 $sql="UPDATE product SET
-    title=$title,
-    picture=$picture,
-    description=$description,
-    price=$price
+    title=:title,
+    picture=:picture,
+    description=:description,
+    price=:price
      WHERE productID= ('".$args['id']."') " ;  
 $stmt = $db->query($sql);
  $db = null;
