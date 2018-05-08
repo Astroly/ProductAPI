@@ -51,6 +51,7 @@ try {
     echo json_encode($value);
     $db = null;
     echo 'sussed';
+    return "dfvsdfvs";
 } catch(PDOException $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
 }
