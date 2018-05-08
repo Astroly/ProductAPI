@@ -30,14 +30,19 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
   $app->post('/api/products/add', function ($request, $response) {
     $query="INSERT INTO product(productID,title,picture,description,price)
     VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."')";
+      $productID = $request->getParam('productID') ;
+      $title = $request->getParam('title') ;
+      $picture = $request->getParam('picture') ;
+      $description = $request->getParam('description') ;
+      $price = $request->getParam('price') ;
 try {
     $db = getConnection();
     $stmt = $db->prepare($sql);
-    $stmt->bindParam("productID", $value->$productID);
-    $stmt->bindParam("title", $value->$title);
-    $stmt->bindParam("picture", $value->$picture);
-    $stmt->bindParam("description", $value->$description);
-    $stmt->bindParam("price", $value->$price);
+    $stmt->$request->bindParam("productID", $value->$productID);
+    $stmt->$request->bindParam("title", $value->$title);
+    $stmt->$request->bindParam("picture", $value->$picture);
+    $stmt->$request->bindParam("description", $value->$description);
+    $stmt->$request->bindParam("price", $value->$price);
     $stmt->execute();
     //$wine->id = $db->lastInsertId();
     //$db = null;
