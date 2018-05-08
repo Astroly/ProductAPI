@@ -13,7 +13,7 @@ $app->get('/api/products', function ($request, $response) {
 });
 //getByID
 $app->get('/api/products/{id}', function ($request, $response, $args) {
-
+    header("Content-Type: application/json");
 
     $sql = "SELECT * FROM product where productID =  ('".$args['id']."')";
     
@@ -30,6 +30,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 
 //POST ...ADD
   $app->post('/api/products/', function ($request, $response) {
+    header("Content-Type: application/json");
      $productID = $request->getParam('productID') ;
       $title = $request->getParam('title') ;
       $picture = $request->getParam('picture') ;
@@ -52,6 +53,7 @@ try {
 
 //PUT...UPDATE
  $app->put('/api/products/{id}',function($request, $response, $args) {
+    header("Content-Type: application/json");
    // header("Content-Type: application/json");
     
     $productID = $request->getParam('productID') ;
@@ -81,6 +83,7 @@ return '{"status" : "UPDATE Success" }';
 
 //Delete
 $app->delete('/api/products/delete/{id}', function($request, $response, $args) {
+    header("Content-Type: application/json");
 
     $sql = "DELETE FROM product WHERE productID = ('".$args['id']."')";
     
