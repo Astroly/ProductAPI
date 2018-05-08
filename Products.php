@@ -28,25 +28,26 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 });
 
  $app->post('/api/products/add', function ($request, $response) {
+    header("Content-Type: application/json");
+    addProducts();
+//     try{
+//     $db = getConnection();
+//     $productID = $request->getParam('productID') ;
+//     $title = $request->getParam('title') ;
+//     $picture = $request->getParam('picture') ;
+//     $description = $request->getParam('description') ;
+//     $price = $request->getParam('price') ;
 
-    try{
-    $db = getConnection();
-    $productID = $request->getParam('productID') ;
-    $title = $request->getParam('title') ;
-    $picture = $request->getParam('picture') ;
-    $description = $request->getParam('description') ;
-    $price = $request->getParam('price') ;
+//     $query="INSERT INTO product(productID,title,picture,description,price)
+//      VALUES ($productID,$title,$picture,$description,$price)";
+//     }catch(PODExution $e) {
+//         echo '{"error": {"text": '.$e->getMessage().'}' ;
 
-    $query="INSERT INTO product(productID,title,picture,description,price)
-     VALUES ($productID,$title,$picture,$description,$price)";
-    }catch(PODExution $e) {
-        echo '{"error": {"text": '.$e->getMessage().'}' ;
-
-    }
+//     }
     
-   //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
+//    //$query= "INSERT INTO product (title , description , picture, price) VALUES ('{$title}',  $description, $picture,  $price)"
     
-    //return $request+$response;
+//     //return $request+$response;
 
  });
   
@@ -122,7 +123,37 @@ function getProducts() {
         echo json_encode($e->getMessage());
       }
     }
-
+ function addProducts(){
+        $db = getConnection();
+		if(isset($_POST['productID'])){
+			$productID = $_POST['productID'];
+            $title= '';
+            $picture = '';
+            $description ='';
+            $price ='';
+			if(isset($_POST['title'])){
+				$title = $_POST['title'];
+			}
+			if(isset($_POST['picture'])){
+				$picture = $_POST['picture'];
+            }
+            if(isset($_POST['description'])){
+				$description = $_POST['description'];
+            }
+            if(isset($_POST['price'])){
+				$price = $_POST['price'];
+			}
+            $query="INSERT INTO product(productID,title,picture,description,price) 
+                    values ('" . $name ."','". $title ."','" . $picture ."','". $description ."',,'". $price ."')";
+            //$dbcontroller = new DBController();
+            
+			$result = $db->executeQuery($query);
+			if($result != 0){
+				$result = array('success'=>1);
+				return $result;
+			}
+		}
+	}
     
 function getConnection() {
     $dbhost="db4free.net";
