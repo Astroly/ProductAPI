@@ -44,7 +44,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
         echo json_encode($value);
         $db = null;
     } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
+       // echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
     
     
