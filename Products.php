@@ -57,16 +57,16 @@ try {
     $description = $request->getParam('description') ;
     $price = $request->getParam('price') ;
      
-     
-
-try{
- $db = getConnection();  
-$sql="UPDATE product SET
+     $sql="UPDATE product SET
     title=$title,
     picture=$picture,
     description=$description,
     price=$price
      WHERE productID= ('".$args['id']."') " ;  
+
+
+try{
+ $db = getConnection();  
 $stmt = $db->query($sql);
  $db = null;
 
