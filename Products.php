@@ -39,9 +39,10 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
      
 try {
     $db = getConnection();
-    $stmt = $db->query($sql);
+    
     $sql="INSERT INTO product(productID,title,picture,description,price)
     VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."')";
+    $stmt = $db->query($sql);
     // $stmt->$request->bindParam("productID", $value->$productID);
     // $stmt->$request->bindParam("title", $value->$title);
     // $stmt->$request->bindParam("picture", $value->$picture);
