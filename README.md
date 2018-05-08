@@ -1,5 +1,5 @@
 # ProductAPI
-ProductAPI >>> Product Catalog
+ProductAPI >>> Product Catalog<br>
 GetALL >>>> https://productapi977377.herokuapp.com/Products.php/api/products <br>
 Get Each >>> https://productapi977377.herokuapp.com/Products.php/api/products/ {id} <br>
 POST >>> https://productapi977377.herokuapp.com/Products.php/api/products/<br>
