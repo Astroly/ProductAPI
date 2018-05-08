@@ -53,7 +53,7 @@ try {
 } catch(PDOException $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
 }
-
+return $response;
 });
   
  $app->put('/api/products/update/{id}',function($request, $response, $args) {
