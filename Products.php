@@ -45,7 +45,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
 try {
     $db = getConnection();
     
-    $sql="INSERT INTO product(productID,title,picture,description,price,weight(kg))
+    $sql="INSERT INTO product(productID,title,picture,description,price,weight_kg)
     VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."','" .$weight."')";
     $stmt = $db->query($sql);
     $db = null;
@@ -66,7 +66,7 @@ try {
     $picture =$request->getParam('picture') ;
     $description =$request->getParam('description') ;
     $price =$request->getParam('price') ;
-    $weight = $request->getParam('weight(kg)') ;
+    $weight = $request->getParam('weight_kg') ;
 
 try{
  $db = getConnection();  
@@ -75,7 +75,7 @@ $sql="UPDATE product SET
     picture=('".$picture."'),
     description=('".$description."'),
     price=('".$price."'),
-    weight(kg)=('".$weight."')
+    weight_kg=('".$weight."')
     
      WHERE productID= ('".$args['id']."') " ;  
 $stmt = $db->query($sql);
