@@ -40,7 +40,7 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
       $picture = $request->getParam('picture') ;
       $description = $request->getParam('description') ;
       $price = $request->getParam('price') ;
-      $weight = $request->getParam('weight(kg)') ;
+      $weight = $request->getParam('weight_kg') ;
      
 try {
     $db = getConnection();
