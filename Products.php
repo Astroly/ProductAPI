@@ -40,12 +40,13 @@ $app->get('/api/products/{id}', function ($request, $response, $args) {
       $picture = $request->getParam('picture') ;
       $description = $request->getParam('description') ;
       $price = $request->getParam('price') ;
+      $weight = $request->getParam('weight') ;
      
 try {
     $db = getConnection();
     
-    $sql="INSERT INTO product(productID,title,picture,description,price)
-    VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."')";
+    $sql="INSERT INTO product(productID,title,picture,description,price,weight)
+    VALUES ('" .$productID."','" .$title."','" .$picture."' ,'" .$description."','" .$price."','" .$weight."')";
     $stmt = $db->query($sql);
     $db = null;
     return '{"status" : "ADD Success" }';
@@ -65,7 +66,7 @@ try {
     $picture =$request->getParam('picture') ;
     $description =$request->getParam('description') ;
     $price =$request->getParam('price') ;
-     
+    $weight = $request->getParam('weight') ;
 
 try{
  $db = getConnection();  
@@ -73,7 +74,8 @@ $sql="UPDATE product SET
     title=('".$title."'),
     picture=('".$picture."'),
     description=('".$description."'),
-    price=('".$price."')
+    price=('".$price."');
+    weight=('".$weight."')
      WHERE productID= ('".$args['id']."') " ;  
 $stmt = $db->query($sql);
  $db = null;
