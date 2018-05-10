@@ -17,6 +17,7 @@ example {<br>
     "picture": "https://secure.ap-tescoassets.com/assets/TH/031/8850805000031/ShotType1_328x328.jpg",<br>
     "description": "Fish Food",<br>
     "price": "31"<br>
+    "weight_kg" : "0.2"<br>
  }<br>
  
 <br>Warning!!!<br>
@@ -24,7 +25,8 @@ example {<br>
 <br>title is VARCHAR Use Eng. only<br>
 <br>Picture is Url  <br>
 <br>description is VARCHAR Use Eng. only<br>
-<br>price is INT  <br>
+<br>price is DOUBLE  <br>
+<br>weight_kg is double <br>
 
 5830213003	Poramet Thongkaeokeot<br>
 5830213005	Pattragun Janpan<br>
