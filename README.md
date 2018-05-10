@@ -26,7 +26,7 @@ example {<br>
 <br>Picture is Url  <br>
 <br>description is VARCHAR Use Eng. only<br>
 <br>price is DOUBLE  <br>
-<br>weight_kg is double <br>
+<br>weight_kg is DOUBLE <br>
 
 5830213003	Poramet Thongkaeokeot<br>
 5830213005	Pattragun Janpan<br>
